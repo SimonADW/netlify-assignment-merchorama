@@ -1,0 +1,20 @@
+
+:root {
+	/*  COLORS */
+	--color-background: #FFFFFF; 
+	--color-foreground: #363636;
+	--color-primary: #242F40;
+	--color-secondary: #E5E5E5;
+	--color-tercary: #CCA43B;
+
+	/* SPACING */
+	--spacing-xsmall: ;
+	--spacing-small: ;
+	--spacing-medium: ;
+	--spacing-large: ;
+	--spacing-x-large: ;
+
+	/* LEADING */
+	--leading-small: 0.8rem;	
+	--leading-large: 1.5rem; 
+} 
