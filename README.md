@@ -4,6 +4,8 @@ The final project aims to showcase your proficiency in coding and design, integr
 
 ### School project, not intended for commercial use
 
+* Font Magra
+	Google Fonts, Open Source
 * Api Bandsintown
 <!-- https://publicapis.io/bandsintown-api -->
 * SVG Collection
