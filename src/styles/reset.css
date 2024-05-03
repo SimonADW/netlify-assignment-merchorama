@@ -30,6 +30,7 @@ max-width: 100%;
 
 input, button, textarea, select {
 font: inherit;
+border-style: none;
 }
 
 button {						/* Added */
