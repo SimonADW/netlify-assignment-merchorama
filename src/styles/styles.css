@@ -50,9 +50,31 @@ main {
 	color: var(--color-secondary);
 }
 
+/* LIVE WATCH */
+.live-watch {
+	height: 6.7rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
 /* HOME MAIN SECTION */
 .home__main-section {
 	flex: 1 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;	
+	padding-top: 6rem;
+}
+
+.home__main-section__logo {
+	width: 70%;
+}
+
+.span-underline {
+	text-decoration: underline;
 }
 
 /* HOME FOOTER */
