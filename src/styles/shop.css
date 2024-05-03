@@ -1,0 +1,44 @@
+
+.home-header__container-rigth svg {
+	height: 100%;
+}
+
+.home-header__container-rigth path {
+	stroke: var(--color-secondary);
+}
+
+.cart-badge {
+	width: 0.7rem;
+	height: 0.7rem;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	font-size: 0.6rem;
+	font-weight: 600;
+	color: var(--color-secondary);
+	background: var(--color-tercary);
+}
+
+/* SHOP */
+.shop__main-section{
+	display: flex;
+	align-items: center;	
+	justify-content: center;
+	gap: var(--spacing-medium);	
+	flex: 1 0 auto;
+}
+
+
+.shop__tees-link,
+.shop__hoodies-link {
+	text-align: center;	
+	width: 30%;
+
+}
+
+.shop__image-link {
+	box-shadow: 2px 3px 5px 2px rgba(0, 0, 0, 0.40);
+	margin-bottom: 1rem;
+}

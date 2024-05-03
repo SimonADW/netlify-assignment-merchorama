@@ -38,7 +38,7 @@ h4 {}
 .home-header__container-left,
 .home-header__container-right {
 	display: flex;
-	align-items: center;
+	align-items: center;	
 	gap: 1rem;
 	font-weight: 700;
 }
@@ -49,8 +49,8 @@ h4 {}
 }
 
 .header__cart-icon {
-	width: 2rem;
-	height: 2rem;
+	width: 1.8rem;
+	height: 1.8rem;
 	display: inline-block;
 }
 
@@ -58,6 +58,7 @@ h4 {}
 	height: 2.5rem;
 	width: 2.5rem;
 	color: var(--color-secondary);
+	display: inline-block;
 }
 
 
