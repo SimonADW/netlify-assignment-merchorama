@@ -21,7 +21,9 @@ h3 {
 	font-weight: 600;
 	letter-spacing: 0.16rem;
 }
-h4 {}
+h4 {
+	font-size: var(--font-size-large);
+}
 
 /* HOME HEADER */
 .home-header {
@@ -63,7 +65,7 @@ h4 {}
 
 
 /* MENU DRAWER */
-.menudrawer-logged-out {
+.menudrawer {
 	height: 19rem;
 	width: 100%;
 	position: absolute;
@@ -73,9 +75,10 @@ h4 {}
 	padding: var(--spacing-xsmall);
 	color: var(--color-secondary);
 	background: var(--color-primary);
+	z-index: 2;
 }
 
-.menudrawer-logged-out div {
+.menudrawer div {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -85,8 +88,8 @@ h4 {}
 }
 
 	/* Close button and horns */
-.menudrawer-logged-out path,  
-.menudrawer-logged-out rect {
+.menudrawer path,  
+.menudrawer rect {
 	stroke: var(--color-secondary);
 	fill: var(--color-secondary);
 }
@@ -98,7 +101,7 @@ h4 {}
 /* LIVE WATCH */
 .live-watch {
 	height: 6.7rem;
-	display: flex;
+	display: none;    /* Javascript controlled */
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
