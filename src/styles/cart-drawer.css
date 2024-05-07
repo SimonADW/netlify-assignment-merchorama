@@ -1,7 +1,7 @@
 .shop__cart-drawer {
 	width: 100%;	
 	max-width: 27rem;
-	display: flex;  				/* JS toggles Display */
+	display: none;  				/* JS toggles Display */
 	flex-direction: column;
 	align-items: center;
 	gap: var(--spacing-medium);
