@@ -94,13 +94,22 @@
 }
 
 .shop__merch-list__items__card {
-	height: 10rem;	
 	width: 100%;	
-	display: flex;
-	justify-content: space-between;
+	display: flex;	
 	border-bottom: 1px solid var(--color-primary);
 	padding: var(--spacing-small) 0;
 	margin-bottom: var(--spacing-large);
+}
+
+.shop__merch-list__items__card img {
+	width: 25%;
+}
+
+.shop__merch-list__items__card-content-wrapper {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
 }
 
 .shop__merch-list__items__card__left-container, 
@@ -116,13 +125,13 @@
 	flex-shrink: 0;
 	
 }
+
 .shop__merch-list__items__card__left-container__content {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	gap: var(--spacing-small);
-	padding-left: var(--spacing-small);
-	
+	padding-left: var(--spacing-small);	
 }
 
 .shop__merch-list__item-price {
@@ -136,4 +145,74 @@
 	padding: var(--spacing-small) var(--spacing-medium);
 	border-radius: 5px;
 	background: var(--color-tercary);
+}
+
+@media screen and (min-width: 481px) {
+	
+	.shop__merch-list-container {
+		flex-direction: row;
+		align-items: flex-start;
+		padding: var(--spacing-large) 0;
+	}		
+
+	/* Input section */
+	.shop__merch-input-wrapper {
+		border-right: 1px solid var(--color-tercary);
+		flex-basis: 30%;
+	}
+
+	.shop__merch-list-filter-button {
+		display: none;
+	}
+
+	.shop__merch-list__filter-drawer {
+		position: static;
+		display: flex;
+		padding: 0;
+	}	
+
+	.item__close {
+		display: none;
+	}
+
+	.shop__merch-list-sort-container {		
+		flex-direction: column;
+	}
+
+	.shop__merch-list__filter-clear-button {
+		display: none;
+	}
+
+	/* Input section */
+
+
+	/* Items list */
+	.shop__merch-list__items {
+		margin: 0 var(--spacing-large);
+		flex-flow: row wrap;
+		gap: var(--spacing-large);
+	}
+
+	/* Item Cards */
+
+	.shop__merch-list__items__card {
+		max-width: 15rem;
+		flex-direction: column;
+		margin-bottom: 0;
+		padding-top: 0;
+	}
+
+	.shop__merch-list__items__card img {
+		width: 100%;
+	}
+
+	.shop__merch-list__items__card__left-container__content {
+		padding: 0;
+	}
+
+	.shop__merch-list__items__card-content-wrapper {
+		padding-top: var(--spacing-small);
+	}	
+
+	
 }

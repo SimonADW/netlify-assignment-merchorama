@@ -23,6 +23,7 @@ h3 {
 }
 h4 {
 	font-size: var(--font-size-large);
+	line-height: 1.2;
 }
 
 /* HOME HEADER */
@@ -160,7 +161,5 @@ h4 {
 @media screen and (min-width: 481px) {
 	.menudrawer {		
 		max-width: 300px;
-	}
-
-
+	}	
 }
