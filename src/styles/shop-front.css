@@ -23,7 +23,7 @@
 
 /* SHOP */
 .shop__front-section{
-	display: none;
+	display: flex;
 	align-items: center;	
 	justify-content: center;
 	gap: var(--spacing-medium);	
@@ -55,4 +55,11 @@
 .shop__hoodies-link:hover .shop__image-link,
 .shop__front-link:hover .shop__image-link {
 	transform: scale(1.01); 
+}
+
+@media screen and (min-width: 481px) { 
+	.shop__tees-link,
+	.shop__hoodies-link {
+		max-width: 300px;
+}
 }

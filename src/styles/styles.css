@@ -118,19 +118,20 @@ h4 {
 /* LIVE WATCH */
 .live-watch {
 	height: 6.7rem;
-	display: none;    /* Javascript controlled */
+	display: flex;    /* Javascript controlled */
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
 	/* Animate background ?*/
 	background: var(--color-secondary); 
+	/* border-bottom: 1px dotted var(--color-tercary); */
 }
 
 /* HOME MAIN SECTION */
 .home__main-section {
 	flex: 1 0 auto;
-	display: none;
+	display: flex;
 	flex-direction: column;
 	align-items: center;
 	padding-top: 6rem;

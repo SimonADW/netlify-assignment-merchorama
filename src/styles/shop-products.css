@@ -1,7 +1,7 @@
 /* INPUT SECTION  ----------------------------------- */
 
 .shop__merch-list-container {
-	display: flex;
+	display: none;
 	flex-direction: column;
 	align-items: center;
 	flex: 1 0 auto;
