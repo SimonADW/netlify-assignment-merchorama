@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="../src/styles/shop-front.css">
 	<link rel="stylesheet" href="../src/styles/shop-products.css">
 	<link rel="stylesheet" href="../src/styles/shop-item.css">
+	<link rel="stylesheet" href="../src/styles/cart-drawer.css">
 	<link rel="stylesheet" href="../src/styles/styles.css">
 </head>
 <body>	
@@ -50,7 +51,7 @@
 				</svg>
 			</div>
 		</header>
-
+		
 		<div class="menudrawer">
 			<svg class="menudrawer__close" xmlns="http://www.w3.org/2000/svg" width="35px" height="35px" viewBox="0 0 24 24" fill="none">
 				<path d="M6 6L18 18M18 6L6 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -67,6 +68,40 @@
 					<rect x="6.97632" y="4.11374" width="11" height="27" transform="rotate(-4.54557 6.97632 4.11374)" fill="#242F40"/>
 				</svg>
 			</div>
+		</div>
+
+		<div class="shop__cart-drawer">
+			<svg class="cart-drawer__close" xmlns="http://www.w3.org/2000/svg" width="35px" height="35px" viewBox="0 0 24 24" fill="none">
+				<path d="M6 6L18 18M18 6L6 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+			<div class="shop__cart__heading-container">
+				<svg class="logo-medium" xmlns="http://www.w3.org/2000/svg" width="330" height="293" viewBox="0 0 330 293" fill="none">
+					<g id="tee-logo">
+						<rect id="Rectangle 4" x="199.909" y="67.5575" width="46" height="75" transform="rotate(-60 199.909 67.5575)" fill="#CCA43B"/>
+						<rect id="Rectangle 5" x="55.8098" y="72.4945" width="46" height="75" transform="rotate(30 55.8098 72.4945)" fill="#CCA43B"/>
+						<path id="Subtract" fill-rule="evenodd" clip-rule="evenodd" d="M143.696 64.4746C164.501 58.8999 179.687 48.11 177.614 40.3748C177.571 40.2131 177.52 40.0541 177.463 39.8977L222.883 27.7273L278.271 234.435L111.165 279.211L55.7781 72.503L102.164 60.0738C102.193 60.238 102.229 60.401 102.272 60.5627C104.345 68.2979 122.891 70.0494 143.696 64.4746Z" fill="#CCA43B"/>
+						<g id="horns">
+							<rect id="Rectangle 6" x="137.116" y="124.029" width="52" height="46" transform="rotate(-4.54557 137.116 124.029)" fill="#242F40"/>
+							<rect id="Rectangle 7" x="175.847" y="93.8644" width="11" height="27" transform="rotate(-4.54557 175.847 93.8644)" fill="#242F40"/>
+							<rect id="Rectangle 11" x="132.747" y="157.401" width="16.9913" height="14.7784" transform="rotate(-32.332 132.747 157.401)" fill="#242F40"/>
+							<rect id="Rectangle 9" x="163.873" y="119.895" width="12" height="2" transform="rotate(-4.54557 163.873 119.895)" fill="#242F40"/>
+							<rect id="Rectangle 10" x="149.917" y="121.005" width="12" height="2" transform="rotate(-4.54557 149.917 121.005)" fill="#242F40"/>
+							<rect id="Rectangle 8" x="134.976" y="97.1137" width="11" height="27" transform="rotate(-4.54557 134.976 97.1137)" fill="#242F40"/>
+						</g>
+					</g>
+				</svg>
+				<h3>Shopping cart</h3>				
+			</div>
+
+			<ul class="shop__cart-items">
+				<li><span>Item 1</span><span>$25.00</span></li>
+				<li><span>Item 2</span><span>$34.00</span></li>
+				<li><span>Item 3</span><span>$14.99</span></li>
+			</ul>
+
+			<button class="shop__cart__checkout-button">Checkout $</button>
+
+			
 		</div>
 
 		<section class="live-watch">
@@ -224,6 +259,7 @@
 			</div>	
 
 		</section>
+
 
 
 

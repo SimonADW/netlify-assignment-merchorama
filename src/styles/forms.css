@@ -47,12 +47,6 @@
 	
 }
 
-.logo-medium {
-	height: 4rem;
-	width: 4rem;	
-	display: inline-block;
-}
-
 .sign-up__fullname-container,
 .sign-in__email-container,
 .sign-in__password-container, 

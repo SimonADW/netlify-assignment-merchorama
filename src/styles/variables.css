@@ -24,4 +24,7 @@
 	/* LEADING */
 	--leading-small: 0.8rem;	
 	--leading-large: 1.5rem; 
+
+	/* DRAWER-SHADOW */
+	--box-shadow-drawer: 2px 2px 10px 1px var(--color-foreground);
 } 
