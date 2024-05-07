@@ -32,11 +32,15 @@
 
 .shop__cart-items li {
 	width: 100%;
-	display: flex;
-	justify-content: space-between;	
+	display: flex;	
 	font-size: var(--font-size-large);
 	margin-bottom: var(--spacing-small);
 	border-bottom: 1px dotted var(--color-primary);	
+}
+
+.shop__cart-items li span:nth-child(2) {    /* Right align price and trash-btn */
+	margin-left: auto;
+	margin-right: var(--spacing-small);
 }
 
 .shop__cart__checkout-button {
