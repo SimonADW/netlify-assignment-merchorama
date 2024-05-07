@@ -21,6 +21,10 @@
 .shop__merch-heading {
 	width: 100%;
 	font-size: var(--font-size-xlarge);
+	font-weight: 600;
+	color: var(--color-tercary);	
+	letter-spacing: 0.09rem;
+	margin-bottom: var(--spacing-small);
 	text-align: center;
 }
 
@@ -152,7 +156,7 @@
 	.shop__merch-list-container {
 		flex-direction: row;
 		align-items: flex-start;
-		padding: var(--spacing-large) 0;
+		padding: var(--spacing-large) var(--spacing-medium);
 	}		
 
 	/* Input section */
@@ -184,11 +188,13 @@
 	}
 
 	/* Input section */
-
+	.shop__merch-heading  {
+		text-align: start;
+	}
 
 	/* Items list */
 	.shop__merch-list__items {
-		margin: 0 var(--spacing-large);
+		margin-left: var(--spacing-large);
 		flex-flow: row wrap;
 		gap: var(--spacing-large);
 	}
@@ -214,5 +220,5 @@
 		padding-top: var(--spacing-small);
 	}	
 
-	
+
 }

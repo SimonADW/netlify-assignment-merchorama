@@ -51,6 +51,12 @@ h4 {
 	height: 2.7rem;
 }
 
+.header__heading {
+	background: linear-gradient(to right, var(--color-tercary), #d75353);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
 .header__cart-icon {
 	width: 1.8rem;
 	height: 1.8rem;
