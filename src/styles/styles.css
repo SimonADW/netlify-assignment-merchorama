@@ -57,17 +57,20 @@ h4 {
 	-webkit-text-fill-color: transparent;
 }
 
-.header__cart-icon {
+.header__cart-button {
 	width: 1.8rem;
-	height: 1.8rem;
+	height: 100%;
 	display: inline-block;
 }
 
-.header__menu-icon {
-	height: 2.5rem;
+.header__menu-button {
+	height: 100%;
 	width: 2.5rem;
 	color: var(--color-secondary);
-	display: inline-block;
+}
+
+.header__menu-button svg {
+	height: 100%;
 }
 
 
