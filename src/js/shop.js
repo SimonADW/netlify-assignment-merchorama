@@ -8,7 +8,7 @@ const liveWatch = document.querySelector(".live-watch");
 const shopFrontSection = document.querySelector(".shop__front-section");
 const shopMerchListSection = document.querySelector(".shop__merch-list-container");
 
-let selectedCategory = "tees";
+let selectedCategory = "hoodie";
 
 // DISPLAY SHOP MENU
 
@@ -31,17 +31,19 @@ const shopMenuHoodiesLink = document.querySelector(".menu-hoodies-link");
 
 
 shopMenuTeesLink.addEventListener("click", () => {
+	selectedCategory = "t-shirt"
 	shopFrontSection.style.display = "none";
 	shopMerchListSection.style.display = "flex";
 	shopMenuDrawer.style.display = "none";
-	selectedCategory = "tees"
+	renderList(products.filter((product)=> product.type.toString() === selectedCategory.toString()));
 })
 
 shopMenuHoodiesLink.addEventListener("click", () => {
+	selectedCategory = "hoodie"
 	shopFrontSection.style.display = "none";
 	shopMerchListSection.style.display = "flex";
 	shopMenuDrawer.style.display = "none";
-	selectedCategory = "hoodies"
+	renderList(products.filter((product)=> product.type.toString() === selectedCategory.toString()));
 });
 
 // SHOP FRONT LINKS
@@ -51,18 +53,20 @@ const shopFrontHoodiesLink = document.querySelector(".shop__hoodies-link");
 
 shopFrontTeesLink.addEventListener("click", (e) => {
 	e.preventDefault();
+	selectedCategory = "t-shirt"
 	shopFrontSection.style.display = "none";
 	shopMerchListSection.style.display = "flex";
 	shopMenuDrawer.style.display = "none";
-	selectedCategory = "tees"
+	renderList(products.filter((product)=> product.type.toString() === selectedCategory.toString()));
 })
 
 shopFrontHoodiesLink.addEventListener("click", (e) => {
 	e.preventDefault();
+	selectedCategory = "hoodie"
 	shopFrontSection.style.display = "none";
 	shopMerchListSection.style.display = "flex";
 	shopMenuDrawer.style.display = "none";
-	selectedCategory = "hoodies"
+	renderList(products.filter((product)=> product.type.toString() === selectedCategory.toString()));
 });
 
 // DISPLAY CART DRAWER
@@ -82,8 +86,9 @@ cartDrawerClose.addEventListener("click", ()=> {
 // RENDER LIST OF PRODUCT
 
 
-// render if selectedCategory === "tees"		
-	renderList(products);
+// render whit selected category	
+	
 
-// render if selectedCategory === "hoodies"
-	renderFilterButtons(products)
+
+
+// RENDER FILTERBUTTONS

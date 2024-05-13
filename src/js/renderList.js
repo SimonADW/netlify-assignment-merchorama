@@ -1,5 +1,9 @@
+import { renderFilterButtons } from "./renderFilters.js";
+
 export const renderList = (currentList)=> {
 	const listContainer = document.querySelector(".shop__merch-list__items");
+
+	renderFilterButtons(currentList)
 
 	currentList.forEach(product => {
 		const listItemCard = document.createElement("div");
@@ -14,8 +18,6 @@ export const renderList = (currentList)=> {
 		const cardContentWrapper = document.createElement("div");
 		cardContentWrapper.classList.add("shop__merch-list__items__card-content-wrapper");
 		listItemCard.appendChild(cardContentWrapper);
-
-
 
 		const cardLeftContainer = document.createElement("div");
 		cardLeftContainer.classList.add("shop__merch-list__items__card__left-container");
@@ -45,6 +47,8 @@ export const renderList = (currentList)=> {
 			</svg>`
 		addToCartButton.classList.add("add-to-cart-button");
 		cardRightContainer.append(itemPrice, addToCartButton, "Add to cart");				
+
+		
 	});
 
 }
