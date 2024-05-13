@@ -36,6 +36,12 @@ Setup:
 			
 			-overlay: cart
 
+#### render-merch-list
+	search
+	sort
+	filter
+
+#### render-merch-item
 
 #### form-validation
 	sign-in
@@ -43,11 +49,6 @@ Setup:
 
 #### concert-api
 
-#### render-merch-list
-	search
-	sort
-	filter
 
-#### render-merch-item
 
 #### render-cart

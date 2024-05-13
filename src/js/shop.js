@@ -1,3 +1,8 @@
+import { renderList } from "./renderList.js";
+import { sortList } from "./sortList.js";
+import products from "../assets/data/products.js";
+import { renderFilterButtons } from "./renderFilters.js";
+
 
 const liveWatch = document.querySelector(".live-watch");
 const shopFrontSection = document.querySelector(".shop__front-section");
@@ -62,9 +67,9 @@ shopFrontHoodiesLink.addEventListener("click", (e) => {
 
 // DISPLAY CART DRAWER
 
-headerCartButton = document.querySelector(".header__cart-button");
-cartDrawer = document.querySelector(".shop__cart-drawer");
-cartDrawerClose = document.querySelector(".cart-drawer__close");
+const headerCartButton = document.querySelector(".header__cart-button");
+const cartDrawer = document.querySelector(".shop__cart-drawer");
+const cartDrawerClose = document.querySelector(".cart-drawer__close");
 
 headerCartButton.addEventListener("click", ()=> {
 	cartDrawer.style.display = "flex";
@@ -73,3 +78,12 @@ headerCartButton.addEventListener("click", ()=> {
 cartDrawerClose.addEventListener("click", ()=> {
 	cartDrawer.style.display = "none";
 })
+
+// RENDER LIST OF PRODUCT
+
+
+// render if selectedCategory === "tees"		
+	renderList(products);
+
+// render if selectedCategory === "hoodies"
+	renderFilterButtons(products)
