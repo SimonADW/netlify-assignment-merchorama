@@ -1,8 +1,46 @@
-import { renderFilterButtons } from "./renderFilters.js";
+import { filterProducts } from "./app.js";
+import products from "../assets/data/products.js";
 
+// RENDER FILTERBUTTONS BASED ON LIST CONTENT
+export const renderFilterButtons = (productsArray)=> {
+	// Get array of brands
+	const allManufacturers = productsArray.map((product)=> product.manufacturer);
+	const noDuplicateManufacturers = allManufacturers.reduce((accumulator, current)=> {
+		if(!accumulator.includes(current)) {
+			accumulator.push(current);
+		}
+		return accumulator;
+	}, []);
+
+	// Render checkbox for each brand
+	const filterOptionsList = document.querySelector(".shop__merch-list-filter-options");
+	filterOptionsList.textContent = "";
+	const filterByHeading = "Filter by: ";
+	filterOptionsList.append(filterByHeading);
+
+	noDuplicateManufacturers.forEach(manufacturer => {
+		const label = document.createElement("label");
+		label.for = "fruit_of_the_loom";
+		label.classList.add("filter-checkbox-label")
+		const checkboxInput = document.createElement("input");
+		label.textContent = manufacturer;
+		checkboxInput.type = "checkbox";
+		checkboxInput.value = manufacturer;
+		checkboxInput.name = manufacturer;
+		label.appendChild(checkboxInput);
+		
+		filterOptionsList.append(label);
+		
+		checkboxInput.addEventListener("change", (event)=> {
+			renderList(filterProducts(products, event.target.value))		
+		})
+	});
+}
+
+// RENDER LIST OF PRODUCTS
 export const renderList = (currentList)=> {
 	const listContainer = document.querySelector(".shop__merch-list__items");
-
+	listContainer.textContent = "";
 	renderFilterButtons(currentList)
 
 	currentList.forEach(product => {
@@ -11,7 +49,13 @@ export const renderList = (currentList)=> {
 		listContainer.appendChild(listItemCard);
 
 		const cardImage = document.createElement("img");
-		cardImage.src = "./assets/images/tee-concretewall-haryo-setyadi.jpeg";
+
+		// Image based on type:
+		product.type === "t-shirt" ?
+			cardImage.src = "./assets/images/tee-concretewall-haryo-setyadi.jpeg"
+			: 
+			cardImage.src = "./assets/images/hoodie-whereslugo.jpeg";
+
 		cardImage.alt = "current product image";
 		listItemCard.appendChild(cardImage);
 		
@@ -47,8 +91,6 @@ export const renderList = (currentList)=> {
 			</svg>`
 		addToCartButton.classList.add("add-to-cart-button");
 		cardRightContainer.append(itemPrice, addToCartButton, "Add to cart");				
-
-		
 	});
-
 }
+
