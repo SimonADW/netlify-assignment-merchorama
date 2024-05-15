@@ -193,7 +193,8 @@
 	}
 
 	.shop__merch-list__filter-clear-button {
-		display: none;
+		/* display: none; */
+		align-self: flex-start;
 	}
 
 	/* Input section */

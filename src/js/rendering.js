@@ -1,11 +1,16 @@
 import products from "../assets/data/products.js";
+import { selectedCategory } from "./app.js";
+let currentFilterOption = "";
+let currentSortOption = "title";
 
 // RENDER FILTERBUTTONS BASED ON LIST CONTENT
-export const renderFilterButtons = (productsArray)=> {
+
+const filterOptionsList = document.querySelector(".shop__merch-list-filter-options");
+export const renderFilterButtons = (productsArray) => {
 	// Get array of brands
-	const allManufacturers = productsArray.map((product)=> product.manufacturer);
-	const noDuplicateManufacturers = allManufacturers.reduce((accumulator, current)=> {
-		if(!accumulator.includes(current)) {
+	const allManufacturers = productsArray.map((product) => product.manufacturer);
+	const noDuplicateManufacturers = allManufacturers.reduce((accumulator, current) => {
+		if (!accumulator.includes(current)) {
 			accumulator.push(current);
 		}
 		return accumulator;
@@ -14,8 +19,7 @@ export const renderFilterButtons = (productsArray)=> {
 	// Render checkbox for each brand
 	const filterOptionsList = document.querySelector(".shop__merch-list-filter-options");
 	filterOptionsList.textContent = "";
-	const filterByHeading = "Filter by: ";
-	// @TODO:  Add clear filter button
+	const filterByHeading = "Filter by: ";	
 	filterOptionsList.append(filterByHeading);
 
 	noDuplicateManufacturers.forEach(manufacturer => {
@@ -29,22 +33,25 @@ export const renderFilterButtons = (productsArray)=> {
 		checkboxInput.id = manufacturer;
 		checkboxInput.name = "filter-radio-button";
 		label.appendChild(checkboxInput);
-		
+
 		filterOptionsList.append(label);
-		
-		checkboxInput.addEventListener("change", (event)=> {
-			renderList(filterProducts(products, event.target.value))		
+
+		checkboxInput.addEventListener("change", (event) => {
+			renderList(filterProducts(products, event.target.value))	
+			if(window.innerWidth < 481) {
+				filterMobileDrawer.style.display = "none";
+			} 
 		})
 	});
 }
 
 
-
 // RENDER LIST OF PRODUCTS
 
-export const renderList = (currentList)=> {
+export const renderList = (listToRender) => {
 	const listContainer = document.querySelector(".shop__merch-list__items");
-	listContainer.textContent = "";	
+	const currentList = listToRender.filter((product) => product.type === selectedCategory.toString());
+	listContainer.textContent = "";
 
 	currentList.forEach(product => {
 		const listItemCard = document.createElement("div");
@@ -56,12 +63,12 @@ export const renderList = (currentList)=> {
 		// Image based on type:
 		product.type === "t-shirt" ?
 			cardImage.src = "./assets/images/tee-concretewall-haryo-setyadi.jpeg"
-			: 
+			:
 			cardImage.src = "./assets/images/hoodie-whereslugo.jpeg";
 
 		cardImage.alt = "current product image";
 		listItemCard.appendChild(cardImage);
-		
+
 		const cardContentWrapper = document.createElement("div");
 		cardContentWrapper.classList.add("shop__merch-list__items__card-content-wrapper");
 		listItemCard.appendChild(cardContentWrapper);
@@ -79,7 +86,7 @@ export const renderList = (currentList)=> {
 		const itemManufacturer = document.createElement("div");
 		itemManufacturer.textContent = product.manufacturer;
 		leftContainerContent.append(itemTitle, itemManufacturer);
-		
+
 		const cardRightContainer = document.createElement("div");
 		cardRightContainer.classList.add("shop__merch-list__items__card__right-container");
 		cardContentWrapper.appendChild(cardRightContainer);
@@ -93,32 +100,67 @@ export const renderList = (currentList)=> {
 			<path d="M18.1384 2.93441L16.3051 9.35107H5.65041M17.2218 13.0177H6.22176L4.38843 1.10107H1.63843M13.5551 3.39274H11.2634M11.2634 3.39274H8.97176M11.2634 3.39274V5.68441M11.2634 3.39274V1.10107M7.13843 16.6844C7.13843 17.1907 6.72802 17.6011 6.22176 17.6011C5.7155 17.6011 5.30509 17.1907 5.30509 16.6844C5.30509 16.1781 5.7155 15.7677 6.22176 15.7677C6.72802 15.7677 7.13843 16.1781 7.13843 16.6844ZM17.2218 16.6844C17.2218 17.1907 16.8114 17.6011 16.3051 17.6011C15.7988 17.6011 15.3884 17.1907 15.3884 16.6844C15.3884 16.1781 15.7988 15.7677 16.3051 15.7677C16.8114 15.7677 17.2218 16.1781 17.2218 16.6844Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 			</svg>`
 		addToCartButton.classList.add("add-to-cart-button");
-		cardRightContainer.append(itemPrice, addToCartButton, "Add to cart");				
+		cardRightContainer.append(itemPrice, addToCartButton, "Add to cart");
 	});
 }
 
 // FILTERING
-let currentSortOption = "title"
-function filterProducts(listToFilter, filterCondition) {	
-	// const filterOptionsList = document.querySelector(".shop__merch-list-filter-options");	
-	const filteredList = listToFilter.filter((product) => product.manufacturer === filterCondition.toString());	
-	console.log(sortList(filteredList, currentSortOption));
+
+function filterProducts(listToFilter, filterCondition) {
+	currentFilterOption = filterCondition;
+	const filteredList = filterCondition
+		? listToFilter.filter((product) => product.manufacturer === currentFilterOption.toString())
+		: listToFilter;
 	return sortList(filteredList, currentSortOption);
 };
 
 // SORTING
-export function sortList(listToSort, sortParameter) {	
-	return listToSort.sort((a, b) => {		
+function sortList(listToSort, sortParameter) {	
+	const filteredList = currentFilterOption 
+	? listToSort.filter((product) => product.manufacturer === currentFilterOption.toString())
+	: listToSort;
+	return filteredList.sort((a, b) => {
 		return a[[sortParameter]].localeCompare(b[[sortParameter]])
 	});
-};	
+};
 
 const sortRadioButtons = document.querySelectorAll('input[name="sort-radio-button"]');
-sortRadioButtons.forEach((button)=> {
-	button.addEventListener("change", (event)=> {
+const filterMobileDrawer = document.querySelector(".shop__merch-list__filter-drawer");
+
+sortRadioButtons.forEach((button) => {
+	button.addEventListener("change", (event) => {
 		currentSortOption = event.target.id;
-		renderList(products, sortList(products, event.target.id))
+		renderList(sortList(products, event.target.id));
+	
 	})
+});
+
+// SEARCH FUNCTION
+
+function submitSearch(currentList, inputvalue) {
+	const filteredListToSearch = currentFilterOption ? filterProducts(currentList, currentFilterOption) : currentList;
+	const sortedListToSearch = sortList(filteredListToSearch, currentSortOption);
+
+	const inputToCompare = inputvalue.trim().toString().toLowerCase()
+	const searchResult = sortedListToSearch.filter((product) => {
+		return product.title.toLowerCase().includes(inputToCompare)
+			|| product.artist.toLowerCase().includes(inputToCompare)
+			|| product.manufacturer.toLowerCase().includes(inputToCompare)
+	});
+
+	renderList(searchResult);
+	return searchResult;
+}
+
+const searchInput = document.querySelector(".shop__merch-search-input");
+
+searchInput.addEventListener("keyup", () => {
+	submitSearch(products, searchInput.value)
 })
 
-console.log(sortRadioButtons); 
+// CLEAR FILTERS
+const filterClearButton = document.querySelector(".shop__merch-list__filter-clear-button");
+filterClearButton.addEventListener("click", ()=> {
+	renderList(filterProducts(products, ""));
+	filterOptionsList.reset();
+})

@@ -1,5 +1,5 @@
 import products from "../assets/data/products.js";
-import { renderList, renderFilterButtons, sortList } from "./rendering.js";
+import { renderList, renderFilterButtons } from "./rendering.js";
 
 
 // --------- LANDING PAGE (INDEX.HTML) ----------
@@ -74,7 +74,7 @@ const liveWatch = document.querySelector(".live-watch");
 const shopFrontSection = document.querySelector(".shop__front-section");
 const shopMerchListSection = document.querySelector(".shop__merch-list-container");
 
-let selectedCategory = "hoodie";
+export let selectedCategory = "hoodie";
 
 // DISPLAY SHOP MENU
 
@@ -101,8 +101,7 @@ shopMenuTeesLink.addEventListener("click", () => {
 	shopFrontSection.style.display = "none";
 	shopMerchListSection.style.display = "flex";
 	shopMenuDrawer.style.display = "none";
-	renderList(products.filter((product) => product.type.toString() === selectedCategory.toString()));
-	console.log("shopmenutees");
+	renderList(products);	
 })
 
 shopMenuHoodiesLink.addEventListener("click", () => {
@@ -110,7 +109,7 @@ shopMenuHoodiesLink.addEventListener("click", () => {
 	shopFrontSection.style.display = "none";
 	shopMerchListSection.style.display = "flex";
 	shopMenuDrawer.style.display = "none";
-	renderList(products.filter((product) => product.type.toString() === selectedCategory.toString()));
+	renderList(products);
 });
 
 // SHOP FRONT LINKS
@@ -124,7 +123,7 @@ shopFrontTeesLink.addEventListener("click", (e) => {
 	shopFrontSection.style.display = "none";
 	shopMerchListSection.style.display = "flex";
 	shopMenuDrawer.style.display = "none";
-	renderList(products.filter((product) => product.type.toString() === selectedCategory.toString()));
+	renderList(products);
 })
 
 shopFrontHoodiesLink.addEventListener("click", (e) => {
@@ -133,8 +132,20 @@ shopFrontHoodiesLink.addEventListener("click", (e) => {
 	shopFrontSection.style.display = "none";
 	shopMerchListSection.style.display = "flex";
 	shopMenuDrawer.style.display = "none";
-	renderList(products.filter((product) => product.type.toString() === selectedCategory.toString()));
+	renderList(products);
 });
+
+// DISPLAY FILTER DRAWER
+const filterMobileButton = document.querySelector(".shop__merch-list-filter-button");
+const filterMobileDrawer = document.querySelector(".shop__merch-list__filter-drawer");
+const filterMobileDrawerClose = document.querySelector(".item__close");
+filterMobileButton.addEventListener("click", ()=> {	
+	filterMobileDrawer.style.display = "flex";	
+})
+
+filterMobileDrawerClose.addEventListener("click", ()=> {
+	filterMobileDrawer.style.display = "none";
+})
 
 // DISPLAY CART DRAWER
 
