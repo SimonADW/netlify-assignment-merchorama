@@ -1,5 +1,5 @@
 import products from "../assets/data/products.js";
-import { renderList } from "./rendering.js";
+import { renderList, renderFilterButtons, sortList } from "./rendering.js";
 
 
 // --------- LANDING PAGE (INDEX.HTML) ----------
@@ -151,14 +151,6 @@ cartDrawerClose.addEventListener("click", () => {
 })
 
 
-// FILTERING
-export const filterProducts = (listToFilter, filterCondition) => {
-	return listToFilter.map((product) => product.manufacturer === filterCondition)
-}
+// RENDER SHOP ELEMENTS ---------–––––---------------------------
+renderFilterButtons(products);
 
-// SORTING
-export const sortList = (listToSort, sortParameter) => {
-	listToSort.sort((a, b) => {
-		return a[sortParameter].localeCompare(b[sortParameter])
-	});
-};	

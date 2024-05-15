@@ -1,4 +1,3 @@
-import { filterProducts } from "./app.js";
 import products from "../assets/data/products.js";
 
 // RENDER FILTERBUTTONS BASED ON LIST CONTENT
@@ -16,6 +15,7 @@ export const renderFilterButtons = (productsArray)=> {
 	const filterOptionsList = document.querySelector(".shop__merch-list-filter-options");
 	filterOptionsList.textContent = "";
 	const filterByHeading = "Filter by: ";
+	// @TODO:  Add clear filter button
 	filterOptionsList.append(filterByHeading);
 
 	noDuplicateManufacturers.forEach(manufacturer => {
@@ -24,9 +24,10 @@ export const renderFilterButtons = (productsArray)=> {
 		label.classList.add("filter-checkbox-label")
 		const checkboxInput = document.createElement("input");
 		label.textContent = manufacturer;
-		checkboxInput.type = "checkbox";
+		checkboxInput.type = "radio";
 		checkboxInput.value = manufacturer;
-		checkboxInput.name = manufacturer;
+		checkboxInput.id = manufacturer;
+		checkboxInput.name = "filter-radio-button";
 		label.appendChild(checkboxInput);
 		
 		filterOptionsList.append(label);
@@ -37,11 +38,13 @@ export const renderFilterButtons = (productsArray)=> {
 	});
 }
 
+
+
 // RENDER LIST OF PRODUCTS
+
 export const renderList = (currentList)=> {
 	const listContainer = document.querySelector(".shop__merch-list__items");
-	listContainer.textContent = "";
-	renderFilterButtons(currentList)
+	listContainer.textContent = "";	
 
 	currentList.forEach(product => {
 		const listItemCard = document.createElement("div");
@@ -94,3 +97,28 @@ export const renderList = (currentList)=> {
 	});
 }
 
+// FILTERING
+let currentSortOption = "title"
+function filterProducts(listToFilter, filterCondition) {	
+	// const filterOptionsList = document.querySelector(".shop__merch-list-filter-options");	
+	const filteredList = listToFilter.filter((product) => product.manufacturer === filterCondition.toString());	
+	console.log(sortList(filteredList, currentSortOption));
+	return sortList(filteredList, currentSortOption);
+};
+
+// SORTING
+export function sortList(listToSort, sortParameter) {	
+	return listToSort.sort((a, b) => {		
+		return a[[sortParameter]].localeCompare(b[[sortParameter]])
+	});
+};	
+
+const sortRadioButtons = document.querySelectorAll('input[name="sort-radio-button"]');
+sortRadioButtons.forEach((button)=> {
+	button.addEventListener("change", (event)=> {
+		currentSortOption = event.target.id;
+		renderList(products, sortList(products, event.target.id))
+	})
+})
+
+console.log(sortRadioButtons); 
