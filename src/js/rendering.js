@@ -62,9 +62,9 @@ export const renderList = (listToRender) => {
 
 		// Image based on type:
 		product.type === "t-shirt" ?
-			cardImage.src = "./assets/images/tee-concretewall-haryo-setyadi.jpeg"
+			cardImage.src = "./assets/images/tee-concretewall-haryo-setyadi.jpg"
 			:
-			cardImage.src = "./assets/images/hoodie-whereslugo.jpeg";
+			cardImage.src = "./assets/images/hoodie-whereslugo.jpg";
 
 		cardImage.alt = "current product image";
 		listItemCard.appendChild(cardImage);
