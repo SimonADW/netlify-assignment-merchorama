@@ -40,6 +40,7 @@ Setup:
 	search
 	sort
 	filter
+	
 
 #### render-merch-item
 

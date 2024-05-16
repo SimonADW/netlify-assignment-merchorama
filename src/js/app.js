@@ -95,20 +95,35 @@ shopDrawerCloseButton.addEventListener("click", () => {
 const shopMenuTeesLink = document.querySelector(".menu-tees-link");
 const shopMenuHoodiesLink = document.querySelector(".menu-hoodies-link");
 
+const itemPage = document.querySelector(".shop__item-page");
+const listContainer = document.querySelector(".shop__merch-list__items");
+const listInputWrapper = document.querySelector(".shop__merch-input-wrapper");
 
 shopMenuTeesLink.addEventListener("click", () => {
 	selectedCategory = "t-shirt"
+
 	shopFrontSection.style.display = "none";
 	shopMerchListSection.style.display = "flex";
 	shopMenuDrawer.style.display = "none";
+
+	itemPage.style.display = "none";
+	listContainer.style.display = "flex";
+	listInputWrapper.style.display = "flex";
+
 	renderList(products);	
 })
 
 shopMenuHoodiesLink.addEventListener("click", () => {
 	selectedCategory = "hoodie"
+	
 	shopFrontSection.style.display = "none";
 	shopMerchListSection.style.display = "flex";
 	shopMenuDrawer.style.display = "none";
+
+	itemPage.style.display = "none";
+	listContainer.style.display = "flex";
+	listInputWrapper.style.display = "flex";
+
 	renderList(products);
 });
 

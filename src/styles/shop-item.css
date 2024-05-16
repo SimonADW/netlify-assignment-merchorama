@@ -6,8 +6,9 @@
 	align-items: center;
 }
 
-.item__close {
-	margin-left: auto;
+.item__close, 
+.item__close__card {
+	margin-left: auto;	
 }
 
 .shop__item-container {

@@ -5,8 +5,13 @@ let currentSortOption = "title";
 
 // RENDER FILTERBUTTONS BASED ON LIST CONTENT
 
-const filterOptionsList = document.querySelector(".shop__merch-list-filter-options");
+const listContainer = document.querySelector(".shop__merch-list__items");
+const listInputWrapper = document.querySelector(".shop__merch-input-wrapper");
+const itemPage = document.querySelector(".shop__item-page");
+// let currentItemId = null;
+
 export const renderFilterButtons = (productsArray) => {
+	const filterOptionsList = document.querySelector(".shop__merch-list-filter-options");
 	// Get array of brands
 	const allManufacturers = productsArray.map((product) => product.manufacturer);
 	const noDuplicateManufacturers = allManufacturers.reduce((accumulator, current) => {
@@ -16,8 +21,7 @@ export const renderFilterButtons = (productsArray) => {
 		return accumulator;
 	}, []);
 
-	// Render checkbox for each brand
-	const filterOptionsList = document.querySelector(".shop__merch-list-filter-options");
+	// Render checkbox for each brand	
 	filterOptionsList.textContent = "";
 	const filterByHeading = "Filter by: ";	
 	filterOptionsList.append(filterByHeading);
@@ -49,14 +53,19 @@ export const renderFilterButtons = (productsArray) => {
 // RENDER LIST OF PRODUCTS
 
 export const renderList = (listToRender) => {
-	const listContainer = document.querySelector(".shop__merch-list__items");
 	const currentList = listToRender.filter((product) => product.type === selectedCategory.toString());
 	listContainer.textContent = "";
 
 	currentList.forEach(product => {
-		const listItemCard = document.createElement("div");
+		const listItemCard = document.createElement("button");
 		listItemCard.classList.add("shop__merch-list__items__card");
 		listContainer.appendChild(listItemCard);
+
+		// Open item on click
+		listItemCard.addEventListener("click", ()=> {
+			renderItem(product.id)
+			console.log("Open item card");
+		})
 
 		const cardImage = document.createElement("img");
 
@@ -66,7 +75,7 @@ export const renderList = (listToRender) => {
 			:
 			cardImage.src = "./assets/images/hoodie-whereslugo.jpg";
 
-		cardImage.alt = "current product image";
+		cardImage.alt = `${product.title} image`;
 		listItemCard.appendChild(cardImage);
 
 		const cardContentWrapper = document.createElement("div");
@@ -95,12 +104,18 @@ export const renderList = (listToRender) => {
 		itemPrice.textContent = product.price;
 		itemPrice.classList.add("shop__merch-list__item-price");
 		const addToCartButton = document.createElement("button");
+		addToCartButton.classList.add("shop__merch-list__item__cart-button");
 		addToCartButton.innerHTML = `
 			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
 			<path d="M18.1384 2.93441L16.3051 9.35107H5.65041M17.2218 13.0177H6.22176L4.38843 1.10107H1.63843M13.5551 3.39274H11.2634M11.2634 3.39274H8.97176M11.2634 3.39274V5.68441M11.2634 3.39274V1.10107M7.13843 16.6844C7.13843 17.1907 6.72802 17.6011 6.22176 17.6011C5.7155 17.6011 5.30509 17.1907 5.30509 16.6844C5.30509 16.1781 5.7155 15.7677 6.22176 15.7677C6.72802 15.7677 7.13843 16.1781 7.13843 16.6844ZM17.2218 16.6844C17.2218 17.1907 16.8114 17.6011 16.3051 17.6011C15.7988 17.6011 15.3884 17.1907 15.3884 16.6844C15.3884 16.1781 15.7988 15.7677 16.3051 15.7677C16.8114 15.7677 17.2218 16.1781 17.2218 16.6844Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 			</svg>`
 		addToCartButton.classList.add("add-to-cart-button");
 		cardRightContainer.append(itemPrice, addToCartButton, "Add to cart");
+
+		addToCartButton.addEventListener("click", (event)=> {
+			event.stopPropagation()
+			console.log("Added to cart");
+		})
 	});
 }
 
@@ -164,3 +179,80 @@ filterClearButton.addEventListener("click", ()=> {
 	renderList(filterProducts(products, ""));
 	filterOptionsList.reset();
 })
+
+// ITEM CARD LINKS
+
+const renderItem = (currentItemId)=> {
+	itemPage.textContent = "";
+
+	listContainer.style.display = "none";
+	listInputWrapper.style.display = "none";
+	itemPage.style.display = "flex";
+		
+	const currentProduct = products.find((product)=> product.id === currentItemId);
+	// find object with currentItemId and render:	
+	const itemContainer = document.createElement("div");
+	itemContainer.classList.add("shop__item-container");
+	itemPage.appendChild(itemContainer);
+
+	const itemCloseButton = document.createElement("button");
+	itemCloseButton.classList.add("item__close__card");
+	itemCloseButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" fill="none">
+		<path d="M6 6L18 18M18 6L6 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		</svg>`;
+	itemCloseButton.addEventListener("click", ()=> {
+		listContainer.style.display = "flex";
+		listInputWrapper.style.display = "flex";
+		itemPage.style.display = "none";
+	})
+
+	const itemImage = document.createElement("img");
+	itemImage.src = "./assets/images/tee-concretewall-haryo-setyadi.jpg";
+	itemImage.alt = `${currentItemId.title} image`
+	
+	const itemContentWrapper = document.createElement("div");
+	itemContentWrapper.classList.add("shop-item-content-wrapper");
+
+	const itemLeftContainer = document.createElement("div");
+	itemLeftContainer.classList.add("shop__item__left-container");
+	const itemRightContainer = document.createElement("div");
+	itemRightContainer.classList.add("shop__item__right-container");
+	itemContentWrapper.append(itemLeftContainer, itemRightContainer);	
+
+	// Item left container
+	const itemLeftContainerContent = document.createElement("div");
+	itemLeftContainerContent.classList.add("shop__item__left-container__content");
+	itemLeftContainer.append(itemLeftContainerContent)
+	
+	const itemName = document.createElement("h4");
+	itemName.classList.add("shop__item__name");
+	itemName.textContent = currentProduct.title;
+
+	const itemManufacturer = document.createElement("div");
+	itemManufacturer.classList.add("shop__item__manufacturer");
+	itemManufacturer.textContent = currentProduct.manufacturer;
+
+	const itemArtist = document.createElement("div");
+	itemArtist.classList.add("shop__item__artist");
+	itemArtist.textContent = currentProduct.artist;
+	
+	itemLeftContainerContent.append(itemName, itemManufacturer, itemArtist);	
+
+	// Item right container
+	const itemPrice = document.createElement("div");
+	itemPrice.classList.add("shop__item-price");
+	itemPrice.textContent = currentProduct.price;
+	
+	const itemAddToCartButton = document.createElement("button");
+	itemAddToCartButton.classList.add("add-to-cart-button");
+	itemAddToCartButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+		<path d="M18.1384 2.93441L16.3051 9.35107H5.65041M17.2218 13.0177H6.22176L4.38843 1.10107H1.63843M13.5551 3.39274H11.2634M11.2634 3.39274H8.97176M11.2634 3.39274V5.68441M11.2634 3.39274V1.10107M7.13843 16.6844C7.13843 17.1907 6.72802 17.6011 6.22176 17.6011C5.7155 17.6011 5.30509 17.1907 5.30509 16.6844C5.30509 16.1781 5.7155 15.7677 6.22176 15.7677C6.72802 15.7677 7.13843 16.1781 7.13843 16.6844ZM17.2218 16.6844C17.2218 17.1907 16.8114 17.6011 16.3051 17.6011C15.7988 17.6011 15.3884 17.1907 15.3884 16.6844C15.3884 16.1781 15.7988 15.7677 16.3051 15.7677C16.8114 15.7677 17.2218 16.1781 17.2218 16.6844Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		</svg>`
+	
+	const addToCartText = document.createElement("div");
+	addToCartText.textContent = "Add to cart";
+	itemRightContainer.append(itemPrice, itemAddToCartButton, addToCartText);
+	itemContainer.append(itemCloseButton, itemImage, itemContentWrapper);	
+}
+
+
