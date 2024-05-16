@@ -185,7 +185,8 @@ filterClearButton.addEventListener("click", ()=> {
 const renderItem = (currentItemId)=> {
 	itemPage.textContent = "";
 
-	listContainer.style.display = "none";
+	const shopMerchListSection = document.querySelector(".shop__merch-list-container");
+	shopMerchListSection.style.display = "none";
 	listInputWrapper.style.display = "none";
 	itemPage.style.display = "flex";
 		
@@ -201,7 +202,7 @@ const renderItem = (currentItemId)=> {
 		<path d="M6 6L18 18M18 6L6 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 		</svg>`;
 	itemCloseButton.addEventListener("click", ()=> {
-		listContainer.style.display = "flex";
+		shopMerchListSection.style.display = "flex";
 		listInputWrapper.style.display = "flex";
 		itemPage.style.display = "none";
 	})
