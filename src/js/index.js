@@ -1,3 +1,5 @@
+import { clearErrorsOnInputChange, validateForm } from "./formValidation";
+
 // --------- LANDING PAGE (INDEX.HTML) ----------
 
 
@@ -24,6 +26,7 @@ const menuSignInLink = document.querySelector(".menu-sign-in-link");
 const signInButton = document.querySelector(".sign-in__button");
 const signUpButton = document.querySelector(".sign-up__button");
 
+
 homeSignInLink.addEventListener("click", () => {
 	signInSection.style.display = "flex";
 	homeMainSection.style.display = "none";
@@ -43,10 +46,14 @@ signInSectionClose.addEventListener("click", () => {
 })
 
 signInButton.addEventListener("click", (event)=> {
-	// @TODO:  If authorized
 	event.preventDefault();
-	window.location.href = "shop.html";
+	// @TODO:  If authorized
+	if(validateForm("sign-in__form")) {
+		window.location.href = "shop.html";
+	}
 })
+
+clearErrorsOnInputChange("sign-in__form")
 
 
 
@@ -74,7 +81,12 @@ signUpSectionClose.addEventListener("click", () => {
 })
 
 signUpButton.addEventListener("click", (event)=> {
-	// @TODO:  If authorized
 	event.preventDefault();
-	window.location.href = "shop.html";
+	// @TODO:  If authorized
+	if(validateForm("sign-up__form")) {
+		window.location.href = "shop.html";
+	}
 })
+
+clearErrorsOnInputChange("sign-up__form");
+

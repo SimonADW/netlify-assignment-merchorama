@@ -103,12 +103,14 @@
 
 				<div class="sign-in__email-container">
 					<label for="e-mail" class="sign-in__email-label input_label">E-mail:</label>
-					<input type="text" id="e-mail" class="sign-in__email text-input">
+					<input type="text" id="e-mail" class="sign-in__email text-input" name="email">
+					<p class="errorMessage emailError"></p>
 				</div>
 
 				<div class="sign-in__password-container">
 					<label for="password" class="sign-in-password-label input_label">Password:</label>
-					<input type="text" id="password" class="sign-in__password text-input">
+					<input type="text" id="password" class="sign-in__password text-input" name="password">
+					<p class="errorMessage passwordError"></p>
 				</div>
 
 				<button class="sign-in__button">Sign in</button>
@@ -145,22 +147,27 @@
 
 				<div class="sign-up__fullname-container">
 					<label for="fullname" class="sign-up__fullname-label input_label">Full name:</label>
-					<input type="text" id="fullname" class="sign-up__fullname text-input">
+					<input type="text" id="fullname" class="sign-up__fullname text-input" name="fullname">
+					<p class="errorMessage fullnameError"></p>
 				</div>
 				
 				<div class="sign-up__email-container">
 					<label for="e-mail" class="sign-up__email-label input_label">E-mail:</label>
-					<input type="text" id="e-mail" class="sign-up__email text-input">
+					<input type="text" id="e-mail" class="sign-up__email text-input" name="email">
+					<p class="errorMessage emailError"></p>
 				</div>
 
 				<div class="sign-up__password-container">
 					<label for="password" class="sign-up-password-label input_label">Password:</label>
-					<input type="text" id="password" class="sign-up__password text-input">
+					<input type="password" id="password" class="sign-up__password text-input" name="password">
+					<p class="errorMessage passwordError"></p>
 				</div>
-
+				
 				<div class="sign-up__password-container">
 					<label for="re-password" class="sign-up-re-password-label input_label">Re-enter password:</label>
-					<input type="text" id="re-password" class="sign-up__re-password text-input">
+					<input type="password" id="re-password" class="sign-up__re-password text-input" name="confirmPassword">
+					<p class="errorMessage confirmPasswordError"></p>
+					
 				</div>
 
 				<button class="sign-up__button">Sign in</button>
