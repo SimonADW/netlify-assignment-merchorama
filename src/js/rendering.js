@@ -8,10 +8,10 @@ let currentSortOption = "title";
 const listContainer = document.querySelector(".shop__merch-list__items");
 const listInputWrapper = document.querySelector(".shop__merch-input-wrapper");
 const itemPage = document.querySelector(".shop__item-page");
+const filterOptionsList = document.querySelector(".shop__merch-list-filter-options");
 // let currentItemId = null;
 
 export const renderFilterButtons = (productsArray) => {
-	const filterOptionsList = document.querySelector(".shop__merch-list-filter-options");
 	// Get array of brands
 	const allManufacturers = productsArray.map((product) => product.manufacturer);
 	const noDuplicateManufacturers = allManufacturers.reduce((accumulator, current) => {
@@ -71,9 +71,9 @@ export const renderList = (listToRender) => {
 
 		// Image based on type:
 		product.type === "t-shirt" ?
-			cardImage.src = "./assets/images/tee-concretewall-haryo-setyadi.jpg"
+			cardImage.src = "../assets/images/tee-concretewall-haryo-setyadi.jpg"
 			:
-			cardImage.src = "./assets/images/hoodie-whereslugo.jpg";
+			cardImage.src = "../assets/images/hoodie-whereslugo.jpg";
 
 		cardImage.alt = `${product.title} image`;
 		listItemCard.appendChild(cardImage);
@@ -207,7 +207,7 @@ const renderItem = (currentItemId)=> {
 	})
 
 	const itemImage = document.createElement("img");
-	itemImage.src = "./assets/images/tee-concretewall-haryo-setyadi.jpg";
+	itemImage.src = "../assets/images/tee-concretewall-haryo-setyadi.jpg";
 	itemImage.alt = `${currentItemId.title} image`
 	
 	const itemContentWrapper = document.createElement("div");
