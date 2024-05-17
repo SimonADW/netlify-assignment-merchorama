@@ -1,13 +1,16 @@
 import { firebaseConfig } from "./firebaseConfig.js";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, getDocs  } from "firebase/firestore";
-// import products from "../assets/data/products.js";
 import { renderList, renderFilterButtons } from "./rendering.js";
 import products from "../assets/data/products.js";
 
 // FIREBASE 
 const app = initializeApp(firebaseConfig);
 export const database = getFirestore(app);
+
+const errorMessageCard = document.querySelector(".error-card");
+const errorMessageContent = document.querySelector(".error-card p");
+const errorMessageDismissButton = document.querySelector(".error-card button");
 
 const setProductsListToDatabase = async ()=> {
 	try {
@@ -27,12 +30,18 @@ export const getProductsFromDatabase = async () => {
 		fetchedDocs.forEach((doc)=> {
 			products.push(doc.data());
 		})
-		console.log(products);
     } catch (error) {
 		// @TODO: user feedback
+		errorMessageCard.style.display = "block";
+		errorMessageContent.textContent = `Something went wrong - Sorry for the inconvenience. Error: ${error.message}`;
         console.log(error.message);
     }
 }
+
+errorMessageDismissButton.addEventListener("click", ()=> {
+	errorMessageCard.style.display = "none";
+	errorMessageContent.textContent = "";
+})
 
 // --------- SHOP PAGE (SHOP.HTML) ---------------------------------------
 
