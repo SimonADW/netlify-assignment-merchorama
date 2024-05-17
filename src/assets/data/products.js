@@ -1,35 +1,9 @@
-const products = [
-    { id: "01", title: "Metallica Black Album T-Shirt", manufacturer: "American Apparel", artist: "Metallica", sizes: ["s", "m", "l", "xl"], price: 19.95, type: "t-shirt" },
-    { id: "02", title: "Nirvana Smiley Face Hoodie", manufacturer: "Gildan", artist: "Nirvana", sizes: ["s", "m", "l", "xl"], price: 39.95, type: "hoodie" },
-    { id: "03", title: "Queen Classic Crest T-Shirt", manufacturer: "Hanes", artist: "Queen", sizes: ["s", "m", "l", "xl"], price: 19.95, type: "t-shirt" },
-    { id: "04", title: "AC/DC Back in Black Hoodie", manufacturer: "Fruit of the Loom", artist: "AC/DC", sizes: ["s", "m", "l", "xl"], price: 39.95, type: "hoodie" },
-    { id: "05", title: "The Beatles Abbey Road T-Shirt", manufacturer: "Champion", artist: "The Beatles", sizes: ["s", "m", "l", "xl"], price: 19.95, type: "t-shirt" },
-    { id: "06", title: "Pink Floyd Dark Side Hoodie", manufacturer: "American Apparel", artist: "Pink Floyd", sizes: ["s", "m", "l", "xl"], price: 39.95, type: "hoodie" },
-    { id: "07", title: "Led Zeppelin Icarus T-Shirt", manufacturer: "Gildan", artist: "Led Zeppelin", sizes: ["s", "m", "l", "xl"], price: 19.95, type: "t-shirt" },
-    { id: "08", title: "David Bowie Aladdin Sane Hoodie", manufacturer: "Hanes", artist: "David Bowie", sizes: ["s", "m", "l", "xl"], price: 39.95, type: "hoodie" },
-    { id: "09", title: "Bob Marley One Love T-Shirt", manufacturer: "Fruit of the Loom", artist: "Bob Marley", sizes: ["s", "m", "l", "xl"], price: 19.95, type: "t-shirt" },
-    { id: "10", title: "The Rolling Stones Tongue Hoodie", manufacturer: "Champion", artist: "The Rolling Stones", sizes: ["s", "m", "l", "xl"], price: 39.95, type: "hoodie" },
-    { id: "11", title: "Guns N' Roses Appetite T-Shirt", manufacturer: "American Apparel", artist: "Guns N' Roses", sizes: ["s", "m", "l", "xl"], price: 19.95, type: "t-shirt" },
-    { id: "12", title: "Iron Maiden Trooper Hoodie", manufacturer: "Gildan", artist: "Iron Maiden", sizes: ["s", "m", "l", "xl"], price: 39.95, type: "hoodie" },
-    { id: "13", title: "Slipknot Iowa Black T-Shirt", manufacturer: "Hanes", artist: "Slipknot", sizes: ["s", "m", "l", "xl"], price: 19.95, type: "t-shirt" },
-    { id: "14", title: "Slipknot Iowa Black Hoodie", manufacturer: "American Apparel", artist: "Slipknot", sizes: ["s", "m", "l", "xl"], price: 39.95, type: "hoodie" },
-    { id: "15", title: "Slipknot Subliminal Verses T-Shirt", manufacturer: "Champion", artist: "Slipknot", sizes: ["s", "m", "l", "xl"], price: 19.95, type: "t-shirt" },
-    { id: "16", title: "Slipknot Subliminal Verses Hoodie", manufacturer: "Fruit of the Loom", artist: "Slipknot", sizes: ["s", "m", "l", "xl"], price: 39.95, type: "hoodie" },
-    { id: "17", title: "Metallica Ride the Lightning T-Shirt", manufacturer: "Gildan", artist: "Metallica", sizes: ["s", "m", "l", "xl"], price: 19.95, type: "t-shirt" },
-    { id: "18", title: "Nirvana In Utero Hoodie", manufacturer: "American Apparel", artist: "Nirvana", sizes: ["s", "m", "l", "xl"], price: 39.95, type: "hoodie" },
-    { id: "19", title: "Queen Live Aid T-Shirt", manufacturer: "Hanes", artist: "Queen", sizes: ["s", "m", "l", "xl"], price: 19.95, type: "t-shirt" },
-    { id: "20", title: "AC/DC High Voltage Hoodie", manufacturer: "Champion", artist: "AC/DC", sizes: ["s", "m", "l", "xl"], price: 39.95, type: "hoodie" },
-    { id: "21", title: "The Beatles Sgt. Pepper's T-Shirt", manufacturer: "Fruit of the Loom", artist: "The Beatles", sizes: ["s", "m", "l", "xl"], price: 19.95, type: "t-shirt" },
-    { id: "22", title: "Pink Floyd Wish You Were Here Hoodie", manufacturer: "Gildan", artist: "Pink Floyd", sizes: ["s", "m", "l", "xl"], price: 39.95, type: "hoodie" },
-    { id: "23", title: "Led Zeppelin Led Zeppelin IV T-Shirt", manufacturer: "American Apparel", artist: "Led Zeppelin", sizes: ["s", "m", "l", "xl"], price: 19.95, type: "t-shirt" },
-    { id: "24", title: "David Bowie Heroes Hoodie", manufacturer: "Hanes", artist: "David Bowie", sizes: ["s", "m", "l", "xl"], price: 39.95, type: "hoodie" },
-    { id: "25", title: "Bob Marley Legend T-Shirt", manufacturer: "Champion", artist: "Bob Marley", sizes: ["s", "m", "l", "xl"], price: 19.95, type: "t-shirt" },
-    { id: "26", title: "The Rolling Stones Sticky Fingers Hoodie", manufacturer: "Fruit of the Loom", artist: "The Rolling Stones", sizes: ["s", "m", "l", "xl"], price: 39.95, type: "hoodie" },
-    { id: "27", title: "Guns N' Roses Use Your Illusion T-Shirt", manufacturer: "American Apparel", artist: "Guns N' Roses", sizes: ["s", "m", "l", "xl"], price: 19.95, type: "t-shirt" },
-    { id: "28", title: "Iron Maiden Number of the Beast Hoodie", manufacturer: "Gildan", artist: "Iron Maiden", sizes: ["s", "m", "l", "xl"], price: 39.95, type: "hoodie" },
-    { id: "29", title: "Slipknot Gray Chapter T-Shirt", manufacturer: "Hanes", artist: "Slipknot", sizes: ["s", "m", "l", "xl"], price: 19.95, type: "t-shirt" },
-    { id: "30", title: "Slipknot Gray Chapter Hoodie", manufacturer: "American Apparel", artist: "Slipknot", sizes: ["s", "m", "l", "xl"], price: 39.95, type: "hoodie" }
-];
+import { getProductsFromDatabase } from "../../js/app";
 
+let products = [];
+
+window.addEventListener("DOMContentLoaded", ()=> {
+    getProductsFromDatabase();
+}) 
 
 export default products;

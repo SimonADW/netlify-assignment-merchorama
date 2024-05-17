@@ -23,7 +23,7 @@ export const renderFilterButtons = (productsArray) => {
 
 	// Render checkbox for each brand	
 	filterOptionsList.textContent = "";
-	const filterByHeading = "Filter by: ";	
+	const filterByHeading = "Filter by: ";
 	filterOptionsList.append(filterByHeading);
 
 	noDuplicateManufacturers.forEach(manufacturer => {
@@ -41,10 +41,10 @@ export const renderFilterButtons = (productsArray) => {
 		filterOptionsList.append(label);
 
 		checkboxInput.addEventListener("change", (event) => {
-			renderList(filterProducts(products, event.target.value))	
-			if(window.innerWidth < 481) {
+			renderList(filterProducts(products, event.target.value))
+			if (window.innerWidth < 481) {
 				filterMobileDrawer.style.display = "none";
-			} 
+			}
 		})
 	});
 }
@@ -62,7 +62,7 @@ export const renderList = (listToRender) => {
 		listContainer.appendChild(listItemCard);
 
 		// Open item on click
-		listItemCard.addEventListener("click", ()=> {
+		listItemCard.addEventListener("click", () => {
 			renderItem(product.id)
 			console.log("Open item card");
 		})
@@ -112,7 +112,7 @@ export const renderList = (listToRender) => {
 		addToCartButton.classList.add("add-to-cart-button");
 		cardRightContainer.append(itemPrice, addToCartButton, "Add to cart");
 
-		addToCartButton.addEventListener("click", (event)=> {
+		addToCartButton.addEventListener("click", (event) => {
 			event.stopPropagation()
 			console.log("Added to cart");
 		})
@@ -130,10 +130,10 @@ function filterProducts(listToFilter, filterCondition) {
 };
 
 // SORTING
-function sortList(listToSort, sortParameter) {	
-	const filteredList = currentFilterOption 
-	? listToSort.filter((product) => product.manufacturer === currentFilterOption.toString())
-	: listToSort;
+function sortList(listToSort, sortParameter) {
+	const filteredList = currentFilterOption
+		? listToSort.filter((product) => product.manufacturer === currentFilterOption.toString())
+		: listToSort;
 	return filteredList.sort((a, b) => {
 		return a[[sortParameter]].localeCompare(b[[sortParameter]])
 	});
@@ -146,7 +146,7 @@ sortRadioButtons.forEach((button) => {
 	button.addEventListener("change", (event) => {
 		currentSortOption = event.target.id;
 		renderList(sortList(products, event.target.id));
-	
+
 	})
 });
 
@@ -175,22 +175,22 @@ searchInput.addEventListener("keyup", () => {
 
 // CLEAR FILTERS
 const filterClearButton = document.querySelector(".shop__merch-list__filter-clear-button");
-filterClearButton.addEventListener("click", ()=> {
+filterClearButton.addEventListener("click", () => {
 	renderList(filterProducts(products, ""));
 	filterOptionsList.reset();
 })
 
 // ITEM CARD LINKS
 
-const renderItem = (currentItemId)=> {
+const renderItem = (currentItemId) => {
 	itemPage.textContent = "";
 
 	const shopMerchListSection = document.querySelector(".shop__merch-list-container");
 	shopMerchListSection.style.display = "none";
 	listInputWrapper.style.display = "none";
 	itemPage.style.display = "flex";
-		
-	const currentProduct = products.find((product)=> product.id === currentItemId);
+
+	const currentProduct = products.find((product) => product.id === currentItemId);
 	// find object with currentItemId and render:	
 	const itemContainer = document.createElement("div");
 	itemContainer.classList.add("shop__item-container");
@@ -201,7 +201,7 @@ const renderItem = (currentItemId)=> {
 	itemCloseButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" fill="none">
 		<path d="M6 6L18 18M18 6L6 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 		</svg>`;
-	itemCloseButton.addEventListener("click", ()=> {
+	itemCloseButton.addEventListener("click", () => {
 		shopMerchListSection.style.display = "flex";
 		listInputWrapper.style.display = "flex";
 		itemPage.style.display = "none";
@@ -210,7 +210,7 @@ const renderItem = (currentItemId)=> {
 	const itemImage = document.createElement("img");
 	itemImage.src = "../assets/images/tee-concretewall-haryo-setyadi.jpg";
 	itemImage.alt = `${currentItemId.title} image`
-	
+
 	const itemContentWrapper = document.createElement("div");
 	itemContentWrapper.classList.add("shop-item-content-wrapper");
 
@@ -218,13 +218,13 @@ const renderItem = (currentItemId)=> {
 	itemLeftContainer.classList.add("shop__item__left-container");
 	const itemRightContainer = document.createElement("div");
 	itemRightContainer.classList.add("shop__item__right-container");
-	itemContentWrapper.append(itemLeftContainer, itemRightContainer);	
+	itemContentWrapper.append(itemLeftContainer, itemRightContainer);
 
 	// Item left container
 	const itemLeftContainerContent = document.createElement("div");
 	itemLeftContainerContent.classList.add("shop__item__left-container__content");
 	itemLeftContainer.append(itemLeftContainerContent)
-	
+
 	const itemName = document.createElement("h4");
 	itemName.classList.add("shop__item__name");
 	itemName.textContent = currentProduct.title;
@@ -236,24 +236,24 @@ const renderItem = (currentItemId)=> {
 	const itemArtist = document.createElement("div");
 	itemArtist.classList.add("shop__item__artist");
 	itemArtist.textContent = currentProduct.artist;
-	
-	itemLeftContainerContent.append(itemName, itemManufacturer, itemArtist);	
+
+	itemLeftContainerContent.append(itemName, itemManufacturer, itemArtist);
 
 	// Item right container
 	const itemPrice = document.createElement("div");
 	itemPrice.classList.add("shop__item-price");
 	itemPrice.textContent = currentProduct.price;
-	
+
 	const itemAddToCartButton = document.createElement("button");
 	itemAddToCartButton.classList.add("add-to-cart-button");
 	itemAddToCartButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
 		<path d="M18.1384 2.93441L16.3051 9.35107H5.65041M17.2218 13.0177H6.22176L4.38843 1.10107H1.63843M13.5551 3.39274H11.2634M11.2634 3.39274H8.97176M11.2634 3.39274V5.68441M11.2634 3.39274V1.10107M7.13843 16.6844C7.13843 17.1907 6.72802 17.6011 6.22176 17.6011C5.7155 17.6011 5.30509 17.1907 5.30509 16.6844C5.30509 16.1781 5.7155 15.7677 6.22176 15.7677C6.72802 15.7677 7.13843 16.1781 7.13843 16.6844ZM17.2218 16.6844C17.2218 17.1907 16.8114 17.6011 16.3051 17.6011C15.7988 17.6011 15.3884 17.1907 15.3884 16.6844C15.3884 16.1781 15.7988 15.7677 16.3051 15.7677C16.8114 15.7677 17.2218 16.1781 17.2218 16.6844Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 		</svg>`
-	
+
 	const addToCartText = document.createElement("div");
 	addToCartText.textContent = "Add to cart";
 	itemRightContainer.append(itemPrice, itemAddToCartButton, addToCartText);
-	itemContainer.append(itemCloseButton, itemImage, itemContentWrapper);	
+	itemContainer.append(itemCloseButton, itemImage, itemContentWrapper);
 }
 
 

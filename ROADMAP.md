@@ -53,3 +53,6 @@ Setup:
 
 
 #### render-cart
+
+
+Remember set firebase to production mode
