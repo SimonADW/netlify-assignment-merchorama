@@ -30,6 +30,7 @@ export const getProductsFromDatabase = async () => {
 		fetchedDocs.forEach((doc)=> {
 			products.push(doc.data());
 		})
+		renderFilterButtons(products);
     } catch (error) {
 		// @TODO: user feedback
 		errorMessageCard.style.display = "block";
@@ -73,6 +74,7 @@ const shopMenuHoodiesLink = document.querySelector(".menu-hoodies-link");
 const itemPage = document.querySelector(".shop__item-page");
 const listContainer = document.querySelector(".shop__merch-list__items");
 const listInputWrapper = document.querySelector(".shop__merch-input-wrapper");
+const filterOptionsList = document.querySelector(".shop__merch-list-filter-options");
 
 shopMenuTeesLink.addEventListener("click", () => {
 	selectedCategory = "t-shirt"
@@ -85,6 +87,7 @@ shopMenuTeesLink.addEventListener("click", () => {
 	listContainer.style.display = "flex";
 	listInputWrapper.style.display = "flex";
 
+	filterOptionsList.reset()
 	renderList(products);	
 })
 
@@ -99,6 +102,7 @@ shopMenuHoodiesLink.addEventListener("click", () => {
 	listContainer.style.display = "flex";
 	listInputWrapper.style.display = "flex";
 
+	filterOptionsList.reset()
 	renderList(products);
 });
 
@@ -152,6 +156,4 @@ cartDrawerClose.addEventListener("click", () => {
 })
 
 
-// RENDER SHOP ELEMENTS ---------–––––---------------------------
-renderFilterButtons(products);
 

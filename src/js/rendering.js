@@ -1,3 +1,4 @@
+import { logEvent } from "firebase/analytics";
 import products from "../assets/data/products.js";
 import { selectedCategory } from "./app.js";
 let currentFilterOption = "";
