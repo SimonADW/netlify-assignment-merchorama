@@ -1,5 +1,34 @@
+import { firebaseConfig } from "./firebaseConfig";
+import { initializeApp } from "firebase/app";
 import { clearErrorsOnInputChange, validateForm } from "./formValidation";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 
+// ----------- FIREBASE AUTH ----------------------------------------
+
+const app = initializeApp(firebaseConfig);
+export const authService = getAuth(app);
+const signInForm = document.querySelector(".sign-in__form");
+const signUpForm = document.querySelector(".sign-up__form");
+
+export const checkAuthStateAndRedirect = ()=> {
+	onAuthStateChanged(authService, (user)=> {	
+		if(user) {
+			window.location.href = "shop.html"
+		} else {
+			window.location.href = "index.html"
+		}
+	})
+}
+
+export const signOutUser = async ()=> {
+	try {
+		await signOut(authService)
+		checkAuthStateAndRedirect();
+	} catch {
+		console.log("Log out failed");
+	}
+}
+	
 // --------- LANDING PAGE (INDEX.HTML) ----------
 
 
@@ -47,15 +76,16 @@ signInSectionClose.addEventListener("click", () => {
 
 signInButton.addEventListener("click", (event)=> {
 	event.preventDefault();
-	// @TODO:  If authorized
 	if(validateForm("sign-in__form")) {
-		window.location.href = "shop.html";
+		signInWithEmailAndPassword(authService, signInForm.email.value, signInForm.password.value )
+		.then(()=> {
+			checkAuthStateAndRedirect();
+			signInButton.parentElement.reset();
+		})
 	}
 })
 
-clearErrorsOnInputChange("sign-in__form")
-
-
+clearErrorsOnInputChange("sign-in__form");
 
 // DISPLAY SIGN UP FORM - CREATE ACCOUNT FORM
 const signUpSection = document.querySelector(".sign-up");
@@ -82,9 +112,12 @@ signUpSectionClose.addEventListener("click", () => {
 
 signUpButton.addEventListener("click", (event)=> {
 	event.preventDefault();
-	// @TODO:  If authorized
 	if(validateForm("sign-up__form")) {
-		window.location.href = "shop.html";
+		createUserWithEmailAndPassword(authService, signUpForm.email.value, signUpForm.password.value)
+		.then(()=> {
+			checkAuthStateAndRedirect();
+			signUpButton.parentElement.reset();
+		})
 	}
 })
 

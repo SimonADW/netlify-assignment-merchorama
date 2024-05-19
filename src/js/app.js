@@ -2,10 +2,22 @@ import { firebaseConfig } from "./firebaseConfig.js";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, getDocs  } from "firebase/firestore";
 import { renderList, renderFilterButtons } from "./rendering.js";
+// import { signOutUser } from "./index.js";
+
 import products from "../assets/data/products.js";
 
-// FIREBASE 
-const app = initializeApp(firebaseConfig);
+// ----------- FIREBASE AUTH SIGN OUT ----------------------------------------
+// TODO: Fix signout 
+// const signOutButton = document.querySelector(".menu-sign-out-button");
+// signOutButton.addEventListener("click", ()=> {
+// 	signOutUser();
+// });
+
+export const signOutButton = document.querySelector(".menu-sign-out-button");
+
+// ----------- FIREBASE FIRESTORE ----------------------------------------
+// TODO: Set firebase to production mode
+export const app = initializeApp(firebaseConfig);
 export const database = getFirestore(app);
 
 const errorMessageCard = document.querySelector(".error-card");
@@ -43,6 +55,7 @@ errorMessageDismissButton.addEventListener("click", ()=> {
 	errorMessageCard.style.display = "none";
 	errorMessageContent.textContent = "";
 })
+
 
 // --------- SHOP PAGE (SHOP.HTML) ---------------------------------------
 

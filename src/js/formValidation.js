@@ -1,68 +1,5 @@
-// export const validateSignUpForm = (fullNameInput, emailInput, passwordInput, confirmPasswordInput, fullNameError, emailError, passwordError, confirmPasswordError)=> {
-// 	let errors = {
-// 		errorStatus: false,
-// 		fullNameError: "",
-// 		emailError: "",
-// 	}
-	
-// 	if(!fullNameInput && !emailInput && !passwordInput && !confirmPasswordInput) {
-// 		errors = {
-// 			errorStatus: true,
-// 			fullNameError: "Please enter your full name ⚠️",
-// 			emailError: "Please enter a valid email adress",
-// 			passwordError: "Please enter a password",
-// 			confirmPasswordError: "Please enter a password",
-// 		}
-
-// 		fullNameError.style.visibility = "visible";
-// 		emailError.style.visibility = "visible";
-// 		passwordError.style.visibility = "visible";
-// 		confirmPasswordError.style.visibility = "visible";
-		
-// 		fullNameError.textContent = errors.fullNameError;
-// 		emailError.textContent = errors.emailError;
-// 		passwordError.textContent = errors.passwordError;
-// 		confirmPasswordError.textContent = errors.confirmPasswordError;
-// 	} else if(!fullNameInput) {
-// 		errors = {
-// 			errorStatus: true,
-// 			fullNameError: "Please enter your full name ⚠️",
-// 			emailError: "",
-// 		}
-// 		fullNameError.style.visibility = "visible";
-// 		emailError.style.visibility = "hidden";
-// 		fullNameError.textContent = errors.fullNameError;
-// 		emailError.textContent = errors.emailError;
-// 	} else if(!emailInput) {
-// 		errors = {
-// 			errorStatus: true,
-// 			fullNameError: "",
-// 			emailError: "Please enter a valid email adress",
-// 		}
-// 		fullNameError.style.visibility = "hidden";
-// 		emailError.style.visibility = "visible";
-// 		fullNameError.textContent = errors.fullNameError;
-// 		emailError.textContent = errors.emailError;		
-// 	} else {
-// 		errors = {
-// 			errorStatus: false,
-// 			fullNameError: "",
-// 			emailError: "",
-// 		}
-// 		fullNameError.style.visibility = "hidden";
-// 		emailError.style.visibility = "hidden";
-// 		fullNameError.textContent = errors.fullNameError;
-// 		emailError.textContent = errors.dateError;
-// 	}
-// 	const formErrorStatus = ()=> {
-// 		return errors.errorStatus;
-// 	}
-
-// 	return {formErrorStatus};
-// };
 
 export const validateForm = (formElementClassName)=> {
-	const formElement = document.querySelector(`.${formElementClassName}`);
 	const formInputs = document.querySelectorAll(`.${formElementClassName} input`);
 	
 	let errors = {
@@ -104,7 +41,6 @@ export const validateForm = (formElementClassName)=> {
 		}
 	});
 
-	!errors.errorStatus && formElement.reset();
 	return !errors.errorStatus;
 }
 
@@ -112,8 +48,8 @@ export const clearErrorsOnInputChange = (formElementClassName)=> {
 	const formElement = document.querySelectorAll(`.${formElementClassName} input`);
 	formElement.forEach((input)=> {		
 		input.addEventListener("keyup", ()=> {
-			console.log("changed");
 			input.nextSibling.nextSibling.textContent = "";	
 		})
 	})
 }
+
