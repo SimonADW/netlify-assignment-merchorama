@@ -1,6 +1,6 @@
-import { logEvent } from "firebase/analytics";
 import products from "../assets/data/products.js";
 import { selectedCategory } from "./app.js";
+import { addToCart, getSumTotal } from "./cartCalculations.js";
 let currentFilterOption = "";
 let currentSortOption = "title";
 
@@ -115,7 +115,7 @@ export const renderList = (listToRender) => {
 
 		addToCartButton.addEventListener("click", (event) => {
 			event.stopPropagation()
-			console.log("Added to cart");
+			addToCart(product);		
 		})
 	});
 }
@@ -209,7 +209,11 @@ const renderItem = (currentItemId) => {
 	})
 
 	const itemImage = document.createElement("img");
-	itemImage.src = "../assets/images/tee-concretewall-haryo-setyadi.jpg";
+	if(currentProduct.type === "t-shirt") {
+		itemImage.src = "../assets/images/tee-concretewall-haryo-setyadi.jpg";
+	} else {
+		itemImage.src = "../assets/images/hoodie-orange-victor-duenas-teixeira.jpg";
+	}
 	itemImage.alt = `${currentItemId.title} image`
 
 	const itemContentWrapper = document.createElement("div");
@@ -250,6 +254,9 @@ const renderItem = (currentItemId) => {
 	itemAddToCartButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
 		<path d="M18.1384 2.93441L16.3051 9.35107H5.65041M17.2218 13.0177H6.22176L4.38843 1.10107H1.63843M13.5551 3.39274H11.2634M11.2634 3.39274H8.97176M11.2634 3.39274V5.68441M11.2634 3.39274V1.10107M7.13843 16.6844C7.13843 17.1907 6.72802 17.6011 6.22176 17.6011C5.7155 17.6011 5.30509 17.1907 5.30509 16.6844C5.30509 16.1781 5.7155 15.7677 6.22176 15.7677C6.72802 15.7677 7.13843 16.1781 7.13843 16.6844ZM17.2218 16.6844C17.2218 17.1907 16.8114 17.6011 16.3051 17.6011C15.7988 17.6011 15.3884 17.1907 15.3884 16.6844C15.3884 16.1781 15.7988 15.7677 16.3051 15.7677C16.8114 15.7677 17.2218 16.1781 17.2218 16.6844Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 		</svg>`
+	itemAddToCartButton.addEventListener("click", ()=> {
+		addToCart(currentProduct);
+	})
 
 	const addToCartText = document.createElement("div");
 	addToCartText.textContent = "Add to cart";
@@ -258,3 +265,33 @@ const renderItem = (currentItemId) => {
 }
 
 
+export const renderCartDrawer = ()=> {
+	const cartContent = JSON.parse(window.localStorage.getItem("cartContent") || "[]");
+	const cartItemsContainer = document.querySelector(".shop__cart-items");
+	cartItemsContainer.textContent = "";
+	cartContent.forEach((cartItem)=> {
+		const cartItemLi = document.createElement("li");
+		cartItemsContainer.append(cartItemLi);
+
+		const itemName = document.createElement("span");		
+		itemName.textContent = cartItem.title;
+
+		const itemAmount = document.createElement("span");
+		itemAmount.className = "cart-item__amount";
+		itemAmount.textContent = cartItem.amount > 1 ? cartItem.amount +"x": "";
+		
+		const itemPrice = document.createElement("span");		
+		itemPrice.textContent = cartItem.price;
+
+		const deleteCartItemButton = document.createElement("button");
+		deleteCartItemButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+			<path d="M2.5 4.01215H12.5M10 4.01215L9.83087 3.50469C9.66694 3.01293 9.58494 2.76705 9.43294 2.58526C9.29869 2.42473 9.12631 2.30047 8.93156 2.22388C8.711 2.13715 8.45187 2.13715 7.9335 2.13715H7.0665C6.54813 2.13715 6.289 2.13715 6.06844 2.22388C5.8737 2.30047 5.7013 2.42473 5.56706 2.58526C5.41503 2.76705 5.33308 3.01293 5.16915 3.50469L5 4.01215M11.25 4.01215V10.3871C11.25 11.4373 11.25 11.9623 11.0456 12.3634C10.8659 12.7162 10.5791 13.003 10.2262 13.1828C9.82512 13.3871 9.30012 13.3871 8.25 13.3871H6.75C5.6999 13.3871 5.17485 13.3871 4.77377 13.1828C4.42096 13.003 4.13413 12.7162 3.95436 12.3634C3.75 11.9623 3.75 11.4373 3.75 10.3871V4.01215M8.75 6.51215V10.8871M6.25 6.51215V10.8871" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>`;
+
+			cartItemLi.append(itemName, itemAmount, itemPrice, deleteCartItemButton);
+	});
+
+	const sumTotal = document.querySelector(".shop__cart-sum");
+	sumTotal.textContent = getSumTotal();
+	
+}

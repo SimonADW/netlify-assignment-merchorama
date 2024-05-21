@@ -1,10 +1,11 @@
 import { firebaseConfig } from "./firebaseConfig.js";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, getDocs  } from "firebase/firestore";
-import { renderList, renderFilterButtons } from "./rendering.js";
+import { renderList, renderFilterButtons, renderCartDrawer } from "./rendering.js";
 // import { signOutUser } from "./index.js";
 
 import products from "../assets/data/products.js";
+import { cartContent } from "./cartCalculations.js";
 
 // ----------- FIREBASE AUTH SIGN OUT ----------------------------------------
 // TODO: Fix signout and auth on shop page load
@@ -165,6 +166,7 @@ const cartDrawer = document.querySelector(".shop__cart-drawer");
 const cartDrawerClose = document.querySelector(".cart-drawer__close");
 
 headerCartButton.addEventListener("click", () => {
+	renderCartDrawer(cartContent);
 	cartDrawer.classList.toggle("cart-visible");
 })
 
