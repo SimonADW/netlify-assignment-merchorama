@@ -1,6 +1,6 @@
 import products from "../assets/data/products.js";
 import { selectedCategory } from "./app.js";
-import { addToCart, getSumTotal } from "./cartCalculations.js";
+import { addToCart, deleteCartItem, getSumTotal } from "./cartCalculations.js";
 let currentFilterOption = "";
 let currentSortOption = "title";
 
@@ -268,7 +268,7 @@ const renderItem = (currentItemId) => {
 export const renderCartDrawer = ()=> {
 	const cartContent = JSON.parse(window.localStorage.getItem("cartContent") || "[]");
 	const cartItemsContainer = document.querySelector(".shop__cart-items");
-	cartItemsContainer.textContent = "";
+	cartItemsContainer.textContent = "";	
 	cartContent.forEach((cartItem)=> {
 		const cartItemLi = document.createElement("li");
 		cartItemsContainer.append(cartItemLi);
@@ -287,11 +287,13 @@ export const renderCartDrawer = ()=> {
 		deleteCartItemButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
 			<path d="M2.5 4.01215H12.5M10 4.01215L9.83087 3.50469C9.66694 3.01293 9.58494 2.76705 9.43294 2.58526C9.29869 2.42473 9.12631 2.30047 8.93156 2.22388C8.711 2.13715 8.45187 2.13715 7.9335 2.13715H7.0665C6.54813 2.13715 6.289 2.13715 6.06844 2.22388C5.8737 2.30047 5.7013 2.42473 5.56706 2.58526C5.41503 2.76705 5.33308 3.01293 5.16915 3.50469L5 4.01215M11.25 4.01215V10.3871C11.25 11.4373 11.25 11.9623 11.0456 12.3634C10.8659 12.7162 10.5791 13.003 10.2262 13.1828C9.82512 13.3871 9.30012 13.3871 8.25 13.3871H6.75C5.6999 13.3871 5.17485 13.3871 4.77377 13.1828C4.42096 13.003 4.13413 12.7162 3.95436 12.3634C3.75 11.9623 3.75 11.4373 3.75 10.3871V4.01215M8.75 6.51215V10.8871M6.25 6.51215V10.8871" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
 			</svg>`;
+		deleteCartItemButton.addEventListener("click", ()=> {
+			deleteCartItem(cartItem);
+		})
 
-			cartItemLi.append(itemName, itemAmount, itemPrice, deleteCartItemButton);
+		cartItemLi.append(itemName, itemAmount, itemPrice, deleteCartItemButton);
 	});
 
-	const sumTotal = document.querySelector(".shop__cart-sum");
-	sumTotal.textContent = getSumTotal();
-	
+	const sumTotalSpan = document.querySelector(".shop__cart-sum");
+	sumTotalSpan.textContent = getSumTotal();
 }

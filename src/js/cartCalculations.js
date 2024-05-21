@@ -1,3 +1,5 @@
+import { renderCartDrawer } from "./rendering";
+
 export let cartContent = [];
 export let sumTotal = null;
 
@@ -10,19 +12,26 @@ export const addToCart = (item)=> {
 		item.amount = 1;
 		cartContent.push(item);
 	};	
-
-	console.log(cartContent);
-
 	window.localStorage.setItem("cartContent", JSON.stringify(cartContent));
 };
 
 export const getSumTotal = ()=> {
+	sumTotal = 0;
 	cartContent = JSON.parse(window.localStorage.getItem("cartContent") || "[]");	
 	cartContent.forEach((item)=> {
 		const itemsPrice = item.price * item.amount;
 		sumTotal += itemsPrice;
 	})
-	return sumTotal.toFixed(2) || 0;
+	return sumTotal ? sumTotal.toFixed(2) : 0;
 };
+
+export const deleteCartItem = (itemToDelete)=> {
+	const cartContentToKeep = cartContent.filter((product)=> {
+	return product.id !== itemToDelete.id;
+	}) 		
+	window.localStorage.setItem("cartContent", JSON.stringify(cartContentToKeep));
+	getSumTotal()
+	renderCartDrawer();
+}
 
 

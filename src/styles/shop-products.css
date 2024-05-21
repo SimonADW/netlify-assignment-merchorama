@@ -155,6 +155,14 @@ input[type="radio"] {
 	background: var(--color-tercary);
 }
 
+.add-to-cart-button:hover {
+	background: #c5c2c2
+}
+
+.add-to-cart-button:active {
+	background: #555555;
+}
+
 @media screen and (min-width: 481px) {
 	
 	.shop__merch-list-container {

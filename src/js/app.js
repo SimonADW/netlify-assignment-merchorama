@@ -166,7 +166,7 @@ const cartDrawer = document.querySelector(".shop__cart-drawer");
 const cartDrawerClose = document.querySelector(".cart-drawer__close");
 
 headerCartButton.addEventListener("click", () => {
-	renderCartDrawer(cartContent);
+	renderCartDrawer();
 	cartDrawer.classList.toggle("cart-visible");
 })
 
