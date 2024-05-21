@@ -7,11 +7,15 @@ import { renderList, renderFilterButtons } from "./rendering.js";
 import products from "../assets/data/products.js";
 
 // ----------- FIREBASE AUTH SIGN OUT ----------------------------------------
-// TODO: Fix signout 
+// TODO: Fix signout and auth on shop page load
+
 // const signOutButton = document.querySelector(".menu-sign-out-button");
 // signOutButton.addEventListener("click", ()=> {
 // 	signOutUser();
 // });
+
+
+
 
 export const signOutButton = document.querySelector(".menu-sign-out-button");
 
@@ -161,11 +165,11 @@ const cartDrawer = document.querySelector(".shop__cart-drawer");
 const cartDrawerClose = document.querySelector(".cart-drawer__close");
 
 headerCartButton.addEventListener("click", () => {
-	cartDrawer.style.display = "flex";
+	cartDrawer.classList.toggle("cart-visible");
 })
 
 cartDrawerClose.addEventListener("click", () => {
-	cartDrawer.style.display = "none";
+	cartDrawer.classList.remove("cart-visible");
 })
 
 
