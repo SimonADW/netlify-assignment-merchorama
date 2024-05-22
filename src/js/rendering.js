@@ -72,9 +72,9 @@ export const renderList = (listToRender) => {
 
 		// Image based on type:
 		product.type === "t-shirt" ?
-			cardImage.src = "../assets/images/tee-concretewall-haryo-setyadi.jpg"
+			cardImage.src = "../src/assets/images/tee-concretewall-haryo-setyadi.jpg"
 			:
-			cardImage.src = "../assets/images/hoodie-whereslugo.jpg";
+			cardImage.src = "../src/assets/images/hoodie-whereslugo.jpg";
 
 		cardImage.alt = `${product.title} image`;
 		listItemCard.appendChild(cardImage);
@@ -210,9 +210,9 @@ const renderItem = (currentItemId) => {
 
 	const itemImage = document.createElement("img");
 	if(currentProduct.type === "t-shirt") {
-		itemImage.src = "../assets/images/tee-concretewall-haryo-setyadi.jpg";
+		itemImage.src = "../src/assets/images/tee-concretewall-haryo-setyadi.jpg";
 	} else {
-		itemImage.src = "../assets/images/hoodie-orange-victor-duenas-teixeira.jpg";
+		itemImage.src = "../src/assets/images/hoodie-orange-victor-duenas-teixeira.jpg";
 	}
 	itemImage.alt = `${currentItemId.title} image`
 
