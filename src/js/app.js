@@ -76,13 +76,22 @@ const shopMenuButton = document.querySelector(".header__menu-button");
 const shopMenuDrawer = document.querySelector(".menudrawer");
 const shopDrawerCloseButton = document.querySelector(".menudrawer__close");
 
-shopMenuButton.addEventListener("click", () => {
+shopMenuButton.addEventListener("click", (event) => {
+	event.stopPropagation()
 	shopMenuDrawer.style.display = "flex";
 });
 
 shopDrawerCloseButton.addEventListener("click", () => {
 	shopMenuDrawer.style.display = "none";
 });
+
+// TODO: Fix close menu on click outside
+// window.addEventListener("click", (event)=> {
+// 	if(shopMenuDrawer.style.display !== "none" && event.target.className !== "menudrawer") {
+// 		shopMenuDrawer.style.display = "none";
+// 		console.log(event.target);
+// 	}
+// })
 
 // MENU LINKS
 
@@ -165,7 +174,8 @@ const headerCartButton = document.querySelector(".header__cart-button");
 const cartDrawer = document.querySelector(".shop__cart-drawer");
 const cartDrawerClose = document.querySelector(".cart-drawer__close");
 
-headerCartButton.addEventListener("click", () => {
+headerCartButton.addEventListener("click", (event) => {
+	event.stopPropagation()
 	renderCartDrawer();
 	cartDrawer.classList.toggle("cart-visible");
 })
@@ -174,5 +184,10 @@ cartDrawerClose.addEventListener("click", () => {
 	cartDrawer.classList.remove("cart-visible");
 })
 
-
-
+// TODO: Fix close menu on click outside
+// window.addEventListener("click", (event)=> {
+// 	if(cartDrawer.style.display !== "none" && event.target.className !== "shop__cart-drawer") {
+// 		cartDrawer.classList.remove("cart-visible");
+// 		console.log(event.target.className);
+// 	}
+// });

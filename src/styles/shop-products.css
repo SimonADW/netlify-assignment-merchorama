@@ -38,11 +38,13 @@
 	width: 100%;	
 	display: none;  				/* JS toggles Display */
 	flex-direction: column;
-	height: calc((100% - 13.5rem)- 3.75rem); 
+	height: calc(40% - 3.75rem); 
 	padding: var(--spacing-small);
 	position: absolute;	
-	top: 13.5rem; 					/* Mobile filter page just below search input */
+	top: 15rem; 					/* Mobile filter page just below search input */
 	left: 0;
+	/* box-shadow: 2px 0px 5px 1px var(--color-foreground); */
+	margin: 0.3rem;
 	background: var(--color-background);
 } 
 
@@ -50,6 +52,13 @@
 	width: 100%;
 	display: flex;
 	flex-direction: column;			
+	gap: 0.3rem;
+}
+
+.filter-checkbox-label {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: start;
 	gap: 0.3rem;
 }
 
