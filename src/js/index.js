@@ -1,8 +1,8 @@
-import { firebaseConfig } from "./firebaseConfig";
+import { firebaseConfig } from "./firebaseConfig.js";
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, collection, addDoc, getDocs  } from "firebase/firestore";
-import { clearErrorsOnInputChange, validateForm } from "./formValidation";
+import { clearErrorsOnInputChange, validateForm } from "./formValidation.js";
 import { renderList, renderFilterButtons, renderCartDrawer } from "./rendering.js";
 
 import products from "../assets/data/products.js";
@@ -290,5 +290,16 @@ cartDrawerClose.addEventListener("click", () => {
 // 	}
 // });
 
+const fetchLiveWatchInfo = async ()=> {
+	try {
+		const response = await fetch("http://localhost:4000/");
+		const data = await response.json();
+		console.log(data);
+	} catch (error) {
+		console.log(error);		
+	}
 
+}
+
+fetchLiveWatchInfo();
 checkAuthStateAndRenderShop();

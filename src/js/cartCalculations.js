@@ -1,4 +1,4 @@
-import { renderCartDrawer } from "./rendering";
+import { renderCartDrawer } from "./rendering.js";
 
 export let cartContent = [];
 export let sumTotal = null;

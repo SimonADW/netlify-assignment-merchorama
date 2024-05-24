@@ -1,4 +1,4 @@
-import { getProductsFromDatabase } from "../../js/index";
+import { getProductsFromDatabase } from "../../js/index.js";
 
 let products = [];
 
