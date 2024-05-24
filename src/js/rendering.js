@@ -1,5 +1,5 @@
 import products from "../assets/data/products.js";
-import { selectedCategory } from "./app.js";
+import { selectedCategory } from "./index.js";
 import { addToCart, deleteCartItem, getSumTotal } from "./cartCalculations.js";
 let currentFilterOption = "";
 let currentSortOption = "title";

@@ -73,6 +73,9 @@ h4 {
 	height: 100%;
 }
 
+.home-header__container-rigth {
+	display: none;
+}
 
 /* MENU DRAWER */
 .menudrawer {
@@ -185,6 +188,15 @@ h4 {
 
 .span-underline {
 	text-decoration: underline;
+}
+
+
+/* SHOP MAIN SECTION */
+.shop__main-section {
+	display: none;
+	flex-direction: column;
+	flex: 1 0 auto;
+	width: 100%;
 }
 
 /* HOME FOOTER */
