@@ -25,6 +25,14 @@
 	margin-left: auto;	
 }
 
+.shop__cart__clear-cart-button {
+	color: red;
+}
+
+.shop__cart__clear-cart-button:hover {
+	text-decoration: underline;
+}
+
 .shop__cart__heading-container {
 	width: 100%;
 	display: flex;

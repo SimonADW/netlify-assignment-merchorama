@@ -19,12 +19,14 @@ const signUpForm = document.querySelector(".sign-up__form");
 const headerButtonContainer = document.querySelector(".home-header__container-rigth");
 
 export const checkAuthStateAndRenderShop = ()=> {
+
 	onAuthStateChanged(authService, (user)=> {	
 		if(user) {
 			homeMainSection.style.display = "none";
 			liveWatch.style.display = "none"
 			shopMainSection.style.display = "flex"			
 			headerButtonContainer.style.display = "flex";
+			getProductsFromDatabase();
 		} else {
 			shopMainSection.style.display = "none"
 			liveWatch.style.display = "flex"
@@ -138,7 +140,7 @@ const setProductsListToDatabase = async ()=> {
 
 // setProductsListToDatabase();  Done once to store in firestore
 
-export const getProductsFromDatabase = async () => {
+export async function getProductsFromDatabase() {
     try {
         const fetchedDocs = await getDocs(collection(database, "merch-products"))
 		fetchedDocs.forEach((doc)=> {

@@ -61,6 +61,21 @@ h4 {
 	width: 1.8rem;
 	height: 100%;
 	display: inline-block;
+} 
+
+.cart-badge {
+	width: 0.7rem;
+	height: 0.7rem;
+	position: absolute;
+	top: 0.6rem;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	font-size: 0.6rem;
+	font-weight: 600;
+	color: var(--color-secondary);
+	background: red;
 }
 
 .header__menu-button {
@@ -75,6 +90,7 @@ h4 {
 
 .home-header__container-rigth {
 	display: none;
+	gap: var(--spacing-small);
 }
 
 /* MENU DRAWER */

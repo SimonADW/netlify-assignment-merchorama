@@ -3,6 +3,18 @@ import { renderCartDrawer } from "./rendering.js";
 export let cartContent = [];
 export let sumTotal = null;
 
+const updateCartButtonBadge = ()=> {
+	const cartBadge = document.querySelector(".cart-badge");
+	const numberOfItemsInCart = cartContent.reduce((accumulator, currentValue)  => accumulator += currentValue.amount, 0);
+	numberOfItemsInCart > 0
+	? (cartBadge.style.display = "flex")
+	: (cartBadge.style.display = "none")
+	numberOfItemsInCart < 100
+	? (cartBadge.textContent = `${numberOfItemsInCart}`)
+	: (cartBadge.textContent = "");
+	console.log(numberOfItemsInCart);
+}
+
 export const addToCart = (item)=> {		
 	cartContent = JSON.parse(window.localStorage.getItem("cartContent") || "[]");
 	const existingProduct = cartContent.find((product)=> product.id === item.id)
@@ -11,7 +23,8 @@ export const addToCart = (item)=> {
 	} else {
 		item.amount = 1;
 		cartContent.push(item);
-	};	
+	};
+	updateCartButtonBadge();
 	window.localStorage.setItem("cartContent", JSON.stringify(cartContent));
 };
 
@@ -32,6 +45,7 @@ export const deleteCartItem = (itemToDelete)=> {
 	window.localStorage.setItem("cartContent", JSON.stringify(cartContentToKeep));
 	getSumTotal()
 	renderCartDrawer();
+	updateCartButtonBadge();
 }
 
 
