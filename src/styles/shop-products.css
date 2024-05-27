@@ -172,6 +172,10 @@ input[type="radio"] {
 	background: #555555;
 }
 
+.add-to-cart-button.add-to-cart-button__item-added {
+	background-color: green;
+}
+
 @media screen and (min-width: 481px) {
 	
 	.shop__merch-list-container {

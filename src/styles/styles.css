@@ -79,11 +79,13 @@ h4 {
 
 /* MENU DRAWER */
 .menudrawer {
-	height: 19rem;
+	height: 25rem;
 	width: 100%;	
 	position: absolute;
 	right: 0;
-	display: none;     /* JavaScript to Flex */
+	top: -100%;
+	transition: top 400ms ease-in-out;
+	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
 	padding: var(--spacing-xsmall);
@@ -91,6 +93,10 @@ h4 {
 	z-index: 2;
 	box-shadow: var(--box-shadow-drawer);
 	background: var(--color-primary);
+}
+
+.menudrawer-visible {
+	top: 3.75rem;
 }
 
 .menudrawer div {

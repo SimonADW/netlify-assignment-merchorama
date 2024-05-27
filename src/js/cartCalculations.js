@@ -35,3 +35,13 @@ export const deleteCartItem = (itemToDelete)=> {
 }
 
 
+export function addedToCartButtonStyling(buttonToStyle, confirmationText) {
+	buttonToStyle.classList.add("add-to-cart-button__item-added");
+	confirmationText.textContent = "Item added ✔︎"
+	const timeout = setTimeout(()=>{ 
+		buttonToStyle.classList.remove("add-to-cart-button__item-added")
+		confirmationText.textContent = "Add to cart";
+
+	}, 1000);
+	// clearTimeout(timeout);
+}

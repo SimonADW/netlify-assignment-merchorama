@@ -1,6 +1,6 @@
 import products from "../assets/data/products.js";
 import { selectedCategory } from "./index.js";
-import { addToCart, deleteCartItem, getSumTotal } from "./cartCalculations.js";
+import { addToCart, addedToCartButtonStyling, deleteCartItem, getSumTotal } from "./cartCalculations.js";
 let currentFilterOption = "";
 let currentSortOption = "title";
 
@@ -111,11 +111,16 @@ export const renderList = (listToRender) => {
 			<path d="M18.1384 2.93441L16.3051 9.35107H5.65041M17.2218 13.0177H6.22176L4.38843 1.10107H1.63843M13.5551 3.39274H11.2634M11.2634 3.39274H8.97176M11.2634 3.39274V5.68441M11.2634 3.39274V1.10107M7.13843 16.6844C7.13843 17.1907 6.72802 17.6011 6.22176 17.6011C5.7155 17.6011 5.30509 17.1907 5.30509 16.6844C5.30509 16.1781 5.7155 15.7677 6.22176 15.7677C6.72802 15.7677 7.13843 16.1781 7.13843 16.6844ZM17.2218 16.6844C17.2218 17.1907 16.8114 17.6011 16.3051 17.6011C15.7988 17.6011 15.3884 17.1907 15.3884 16.6844C15.3884 16.1781 15.7988 15.7677 16.3051 15.7677C16.8114 15.7677 17.2218 16.1781 17.2218 16.6844Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 			</svg>`
 		addToCartButton.classList.add("add-to-cart-button");
-		cardRightContainer.append(itemPrice, addToCartButton, "Add to cart");
+
+		const addToCartText = document.createElement("div");
+		addToCartText.textContent = "Add to cart";
+
+		cardRightContainer.append(itemPrice, addToCartButton, addToCartText);
 
 		addToCartButton.addEventListener("click", (event) => {
 			event.stopPropagation()
-			addToCart(product);		
+			addToCart(product);
+			addedToCartButtonStyling(addToCartButton, addToCartText);	
 		})
 	});
 }
@@ -249,6 +254,9 @@ const renderItem = (currentItemId) => {
 	itemPrice.classList.add("shop__item-price");
 	itemPrice.textContent = currentProduct.price;
 
+	const addToCartText = document.createElement("div");
+	addToCartText.textContent = "Add to cart";
+
 	const itemAddToCartButton = document.createElement("button");
 	itemAddToCartButton.classList.add("add-to-cart-button");
 	itemAddToCartButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
@@ -256,10 +264,9 @@ const renderItem = (currentItemId) => {
 		</svg>`
 	itemAddToCartButton.addEventListener("click", ()=> {
 		addToCart(currentProduct);
+		addedToCartButtonStyling(itemAddToCartButton, addToCartText);
 	})
 
-	const addToCartText = document.createElement("div");
-	addToCartText.textContent = "Add to cart";
 	itemRightContainer.append(itemPrice, itemAddToCartButton, addToCartText);
 	itemContainer.append(itemCloseButton, itemImage, itemContentWrapper);
 }

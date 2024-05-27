@@ -111,11 +111,10 @@ clearErrorsOnInputChange("sign-up__form");
 // _____________********** Moved from App.js after switch to SPA ***********_____________ //
 
 // ----------- FIREBASE AUTH SIGN OUT ----------------------------------------
-// TODO: Fix signout and auth on shop page load
 
 const signOutButton = document.querySelector(".menu-sign-out-button");
 signOutButton.addEventListener("click", ()=> {
-	shopMenuDrawer.style.display = "none";
+	shopMenuDrawer.classList.remove("menudrawer-visible");
 	signOutUser();
 });
 
@@ -147,7 +146,6 @@ export const getProductsFromDatabase = async () => {
 		})
 		renderFilterButtons(products);
     } catch (error) {
-		// @TODO: user feedback
 		errorMessageCard.style.display = "block";
 		errorMessageContent.textContent = `Something went wrong - Sorry for the inconvenience. Error: ${error.message}`;
         console.log(error.message);
@@ -176,11 +174,11 @@ const shopDrawerCloseButton = document.querySelector(".menudrawer__close");
 
 shopMenuButton.addEventListener("click", (event) => {
 	event.stopPropagation()
-	shopMenuDrawer.style.display = "flex";
+	shopMenuDrawer.classList.toggle("menudrawer-visible");
 });
 
 shopDrawerCloseButton.addEventListener("click", () => {
-	shopMenuDrawer.style.display = "none";
+	shopMenuDrawer.classList.remove("menudrawer-visible");
 });
 
 // TODO: Fix close menu on click outside
@@ -206,7 +204,7 @@ shopMenuTeesLink.addEventListener("click", () => {
 
 	shopFrontSection.style.display = "none";
 	shopMerchListSection.style.display = "flex";
-	shopMenuDrawer.style.display = "none";
+	shopMenuDrawer.classList.remove("menudrawer-visible");
 
 	itemPage.style.display = "none";
 	listContainer.style.display = "flex";
@@ -221,7 +219,7 @@ shopMenuHoodiesLink.addEventListener("click", () => {
 	
 	shopFrontSection.style.display = "none";
 	shopMerchListSection.style.display = "flex";
-	shopMenuDrawer.style.display = "none";
+	shopMenuDrawer.classList.remove("menudrawer-visible");
 
 	itemPage.style.display = "none";
 	listContainer.style.display = "flex";
@@ -241,7 +239,7 @@ shopFrontTeesLink.addEventListener("click", (e) => {
 	selectedCategory = "t-shirt"
 	shopFrontSection.style.display = "none";
 	shopMerchListSection.style.display = "flex";
-	shopMenuDrawer.style.display = "none";
+	shopMenuDrawer.classList.remove("menudrawer-visible");
 	renderList(products);
 })
 
@@ -250,7 +248,7 @@ shopFrontHoodiesLink.addEventListener("click", (e) => {
 	selectedCategory = "hoodie"
 	shopFrontSection.style.display = "none";
 	shopMerchListSection.style.display = "flex";
-	shopMenuDrawer.style.display = "none";
+	shopMenuDrawer.classList.remove("menudrawer-visible");
 	renderList(products);
 });
 
@@ -323,5 +321,5 @@ const fetchLiveWatchInfo = async ()=> {
 	}
 }
 
-fetchLiveWatchInfo();
+// fetchLiveWatchInfo();
 checkAuthStateAndRenderShop();

@@ -35,6 +35,16 @@
 .shop__hoodies-link {
 	text-align: center;	
 	width: 30%;
+	font-size: 1.5rem;
+}
+
+.shop__tees-link {
+	transform: translateX(25%);
+	animation: slide-left 700ms ease-in-out 100ms forwards;
+}
+.shop__hoodies-link {
+	transform: translateX(-25%);
+	animation: slide-right 700ms ease-in-out 100ms forwards;
 }
 
 .shop__image-link {
@@ -63,4 +73,31 @@
 	.shop__hoodies-link {
 		max-width: 300px;
 }
+}
+
+@keyframes slide-left {
+	0% {
+		transform: translateX(25%);
+	}
+	80% {
+		transform: translateX(-4%);		
+	}
+
+	100% {
+		transform: translateX(0%);		
+	}
+}
+
+@keyframes slide-right {
+	0% {
+		transform: translateX(-25%);
+	}
+
+	80% {
+		transform: translateX(4%);		
+	}
+
+	100% {
+		transform: translateX(0%);		
+	}
 }
