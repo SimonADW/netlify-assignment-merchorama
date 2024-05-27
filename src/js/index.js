@@ -290,8 +290,8 @@ cartDrawerClose.addEventListener("click", () => {
 // 	}
 // });
 
+const liveWatchInfoDiv = document.querySelector(".live-watch__info");
 const renderLiveWatch = (concertInfo)=> {
-	const liveWatchInfoDiv = document.querySelector(".live-watch__info");
 	const getPostFixedDateString = ()=> {
 		const concertDate = new Date(concertInfo.dates.start.localDate);
 		const months = [
@@ -308,7 +308,7 @@ const renderLiveWatch = (concertInfo)=> {
 	}
 	
 	const timeOfDay = concertInfo.dates.start.localTime.slice(0, -3);
-	liveWatchInfoDiv.textContent = `${getPostFixedDateString()} , ${concertInfo.name}, ${timeOfDay}`
+	liveWatchInfoDiv.textContent = `${getPostFixedDateString()}: ${concertInfo.name}, ${timeOfDay}`;
 }
 
 const fetchLiveWatchInfo = async ()=> {
@@ -318,6 +318,7 @@ const fetchLiveWatchInfo = async ()=> {
 		console.log(data);
 		renderLiveWatch(data)
 	} catch (error) {
+		liveWatchInfoDiv.textContent = `Sorry! Currently unable to get concert info`
 		console.log(error);		
 	}
 }

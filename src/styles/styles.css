@@ -129,10 +129,36 @@ h4 {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	/* Animate background ?*/
-	background: var(--color-secondary); 
-	/* border-bottom: 1px dotted var(--color-tercary); */
+	background: linear-gradient(to right, rgb(55, 55, 71) 5% ,white 35% 65%,  rgb(55, 55, 71) 95%);
+	border-top: 1px solid var(--color-tercary);
 }
+
+.live-watch div:nth-child(3) {
+	font-weight: 600;
+	animation: popout 400ms ease-in 500ms 2 forwards;
+}
+
+/* LIVE WATCH ANIMATION */
+@keyframes popout {
+	0% {
+		transform: scale(1);
+	}
+	20% {
+		transform: scale(1.4);
+	}
+	40% {
+		transform: scale(1.7);
+		color: #d75353;
+	}
+	60% {
+		transform: scale(1.4);
+		color: #d75353;
+	}
+	100% {
+		transform: scale(1);
+	}	
+}
+
 
 /*  ERROR MESSAGE */
 .error-card {
