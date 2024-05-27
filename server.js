@@ -18,8 +18,10 @@ app.get("/", async (req, res)=> {
 	try {
 		const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events?apikey=${API_KEY}&keyword=vaterland&locale=*`);
 		const data = await response.json();
-		res.json(data._embedded.events[0]);	
-		console.log(data);	
+		const sortedEvents = data._embedded.events.sort((a, b)=> {
+			return new Date(a.dates.start.localDate) - new Date(b.dates.start.localDate)
+		});
+		res.json(sortedEvents[0]);
 	} catch (error) {
 		console.log(error);
 	};

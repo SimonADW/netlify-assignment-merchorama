@@ -290,15 +290,36 @@ cartDrawerClose.addEventListener("click", () => {
 // 	}
 // });
 
+const renderLiveWatch = (concertInfo)=> {
+	const liveWatchInfoDiv = document.querySelector(".live-watch__info");
+	const getPostFixedDateString = ()=> {
+		const concertDate = new Date(concertInfo.dates.start.localDate);
+		const months = [
+			"January", "February", "March", "April", "May", "June",
+			"July", "August", "September", "October", "November", "December"
+		  ];
+		const month = months[concertDate.getMonth()];
+		const day = concertDate.getDay();
+		const postFix = (day === 1 || day === 21 || day === 31) ? 'st' :
+		(day === 2 || day === 22) ? 'nd' :
+		(day === 3 || day === 23) ? 'rd' :
+		'th';
+		return `${month} ${day}${postFix}`
+	}
+	
+	const timeOfDay = concertInfo.dates.start.localTime.slice(0, -3);
+	liveWatchInfoDiv.textContent = `${getPostFixedDateString()} , ${concertInfo.name}, ${timeOfDay}`
+}
+
 const fetchLiveWatchInfo = async ()=> {
 	try {
 		const response = await fetch("http://localhost:4000/");
 		const data = await response.json();
 		console.log(data);
+		renderLiveWatch(data)
 	} catch (error) {
 		console.log(error);		
 	}
-
 }
 
 fetchLiveWatchInfo();
