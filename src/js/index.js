@@ -4,6 +4,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
 import { getFirestore, collection, addDoc, getDocs  } from "firebase/firestore";
 import { clearErrorsOnInputChange, validateForm } from "./formValidation.js";
 import { renderList, renderFilterButtons, renderCartDrawer } from "./rendering.js";
+import { cartContent, updateCartButtonBadge } from "./cartCalculations.js";
 
 import products from "../assets/data/products.js";
 
@@ -17,9 +18,8 @@ export const authService = getAuth(app);
 const signInForm = document.querySelector(".sign-in__form");
 const signUpForm = document.querySelector(".sign-up__form");
 const headerButtonContainer = document.querySelector(".home-header__container-rigth");
-
+console.log(cartContent);
 export const checkAuthStateAndRenderShop = ()=> {
-
 	onAuthStateChanged(authService, (user)=> {	
 		if(user) {
 			homeMainSection.style.display = "none";
@@ -27,6 +27,7 @@ export const checkAuthStateAndRenderShop = ()=> {
 			shopMainSection.style.display = "flex"			
 			headerButtonContainer.style.display = "flex";
 			getProductsFromDatabase();
+			updateCartButtonBadge();
 		} else {
 			shopMainSection.style.display = "none"
 			liveWatch.style.display = "flex"

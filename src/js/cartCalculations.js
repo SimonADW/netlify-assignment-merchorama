@@ -1,9 +1,11 @@
 import { renderCartDrawer } from "./rendering.js";
 
-export let cartContent = [];
+export let cartContent = JSON.parse(window.localStorage.getItem("cartContent") || "[]");
 export let sumTotal = null;
 
-const updateCartButtonBadge = ()=> {
+
+
+export const updateCartButtonBadge = ()=> {
 	const cartBadge = document.querySelector(".cart-badge");
 	const numberOfItemsInCart = cartContent.reduce((accumulator, currentValue)  => accumulator += currentValue.amount, 0);
 	numberOfItemsInCart > 0
@@ -15,8 +17,7 @@ const updateCartButtonBadge = ()=> {
 	console.log(numberOfItemsInCart);
 }
 
-export const addToCart = (item)=> {		
-	cartContent = JSON.parse(window.localStorage.getItem("cartContent") || "[]");
+export const addToCart = (item)=> {			
 	const existingProduct = cartContent.find((product)=> product.id === item.id)
 	if(existingProduct) {
 		existingProduct.amount = (existingProduct.amount || 0) +1;
@@ -59,3 +60,4 @@ export function addedToCartButtonStyling(buttonToStyle, confirmationText) {
 	}, 1000);
 	// clearTimeout(timeout);
 }
+
