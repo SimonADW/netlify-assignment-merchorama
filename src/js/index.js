@@ -1,7 +1,7 @@
 import { firebaseConfig } from "./firebaseConfig.js";
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, collection, addDoc, getDocs  } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, doc, setDoc } from "firebase/firestore";
 import { clearErrorsOnInputChange, validateForm } from "./formValidation.js";
 import { renderList, renderFilterButtons, renderCartDrawer } from "./rendering.js";
 import { cartContent, updateCartButtonBadge } from "./cartCalculations.js";
@@ -18,7 +18,7 @@ export const authService = getAuth(app);
 const signInForm = document.querySelector(".sign-in__form");
 const signUpForm = document.querySelector(".sign-up__form");
 const headerButtonContainer = document.querySelector(".home-header__container-rigth");
-console.log(cartContent);
+
 export const checkAuthStateAndRenderShop = ()=> {
 	onAuthStateChanged(authService, (user)=> {	
 		if(user) {
@@ -45,9 +45,8 @@ export const signOutUser = async ()=> {
 		console.log("Log out failed");
 	}
 }
-	
-// --------- LANDING PAGE (INDEX.HTML) ----------
 
+// ----------- LANDING PAGE ----------------------------------------
 
 // DISPLAY SIGN IN FORM
 const signInSection = document.querySelector(".sign-in");
@@ -55,7 +54,6 @@ const signInSectionClose = document.querySelector(".sign-in__close");
 const homeSignInLink = document.querySelector(".home-sign-in-link");
 const signInButton = document.querySelector(".sign-in__button");
 const signUpButton = document.querySelector(".sign-up__button");
-
 
 homeSignInLink.addEventListener("click", () => {
 	signInSection.style.display = "flex";
@@ -85,7 +83,6 @@ clearErrorsOnInputChange("sign-in__form");
 const signUpSection = document.querySelector(".sign-up");
 const signUpSectionClose = document.querySelector(".sign-up__close");
 const homeSignUpLink = document.querySelector(".home-sign-up-link");
-// const menuSignUpLink = document.querySelector(".menu-sign-up-link");
 
 homeSignUpLink.addEventListener("click", () => {
 	signUpSection.style.display = "flex";
@@ -161,7 +158,40 @@ errorMessageDismissButton.addEventListener("click", ()=> {
 })
 
 
-// --------- SHOP PAGE (SHOP.HTML) ---------------------------------------
+// PLACE ORDER TO FIREBASE
+
+export async function postOrderToFirebase() {
+	try {
+		let initialValue = {};
+		const cartContentObject = cartContent.reduce((object, item)=> {
+			return {
+				...object,
+				id: Date.now(), 
+				[Number(item.id)]: item,
+
+			} 
+		}, initialValue);
+		
+		console.log(cartContentObject);
+		await addDoc(collection(database, "orders"), cartContentObject);
+		// TODO: EMPTY CART ON CHECKOUT
+		// cartContent = [];
+		// window.localStorage.setItem("cartContent", JSON.stringify(cartContent));
+		console.log(`Thanks for shopping with us! Your order reference is ${cartContentObject.id}.`); 
+		cartDrawer.classList.remove("cart-visible");
+
+	} catch (error) {
+		console.log(error.message);
+	}
+}
+
+const checkoutButton = document.querySelector(".shop__cart__checkout-button");
+checkoutButton.addEventListener("click", ()=> {	
+	postOrderToFirebase()		
+})
+
+
+// --------- SHOP PAGE  ---------------------------------------
 
 const liveWatch = document.querySelector(".live-watch");
 const shopFrontSection = document.querySelector(".shop__front-section");

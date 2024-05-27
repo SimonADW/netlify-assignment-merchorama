@@ -14,7 +14,6 @@ export const updateCartButtonBadge = ()=> {
 	numberOfItemsInCart < 100
 	? (cartBadge.textContent = `${numberOfItemsInCart}`)
 	: (cartBadge.textContent = "");
-	console.log(numberOfItemsInCart);
 }
 
 export const addToCart = (item)=> {			
@@ -40,14 +39,12 @@ export const getSumTotal = ()=> {
 };
 
 export const deleteCartItem = (itemToDelete)=> {
-	const cartContentToKeep = cartContent.filter((product)=> {
-	return product.id !== itemToDelete.id;
-	}) 		
-	window.localStorage.setItem("cartContent", JSON.stringify(cartContentToKeep));
+	cartContent = cartContent.filter((product) => product.id !== itemToDelete.id);
+    window.localStorage.setItem("cartContent", JSON.stringify(cartContent));
 	getSumTotal()
 	renderCartDrawer();
 	updateCartButtonBadge();
-}
+};
 
 
 export function addedToCartButtonStyling(buttonToStyle, confirmationText) {
@@ -59,5 +56,4 @@ export function addedToCartButtonStyling(buttonToStyle, confirmationText) {
 
 	}, 1000);
 	// clearTimeout(timeout);
-}
-
+};
