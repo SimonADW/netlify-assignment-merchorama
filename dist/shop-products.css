@@ -128,7 +128,9 @@ input[type="radio"] {
 
 .shop__merch-list__items__card img {
 	width: 25%;
+	height: 100%;
 	transition: transform 300ms;
+
 }
 
 .shop__merch-list__items__card-content-wrapper {

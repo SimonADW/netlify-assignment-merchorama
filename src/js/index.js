@@ -190,6 +190,7 @@ export async function postOrderToFirebase() {
 orderConfirmOkButton.addEventListener("click", ()=> {
 	orderConfirmCard.style.display = "none";
 	shopMerchListSection.style.display = "none";
+	itemPage.style.display = "none";
 	shopFrontSection.style.display = "flex";
 })	
 

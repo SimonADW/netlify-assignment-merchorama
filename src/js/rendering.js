@@ -2,6 +2,7 @@ import products from "../assets/data/products.js";
 import { selectedCategory } from "./index.js";
 import { addToCart, addedToCartButtonStyling, deleteCartItem, getSumTotal } from "./cartCalculations.js";
 import icons from "../assets/icons/iconSvgs.js";
+import { teesImages, hoodieImages } from "../assets/data/imagePaths.js";
 
 let currentFilterOption = "";
 let currentSortOption = "title";
@@ -73,9 +74,9 @@ export const renderList = (listToRender) => {
 
 		// Image based on type:
 		product.type === "t-shirt" ?
-			cardImage.src = "../src/assets/images/tee-concretewall-haryo-setyadi.jpg"
+			cardImage.src = `../src/assets/images/t-shirts/${teesImages[product.id]}`
 			:
-			cardImage.src = "../src/assets/images/hoodie-whereslugo.jpg";
+			cardImage.src = `../src/assets/images/hoodies/${hoodieImages[product.id]}`;
 
 		cardImage.alt = `${product.title} image`;
 		listItemCard.appendChild(cardImage);
@@ -211,9 +212,9 @@ const renderItem = (currentItemId) => {
 
 	const itemImage = document.createElement("img");
 	if(currentProduct.type === "t-shirt") {
-		itemImage.src = "../src/assets/images/tee-concretewall-haryo-setyadi.jpg";
+		itemImage.src = `../src/assets/images/t-shirts/${teesImages[currentProduct.id]}`
 	} else {
-		itemImage.src = "../src/assets/images/hoodie-orange-victor-duenas-teixeira.jpg";
+		itemImage.src = `../src/assets/images/hoodies/${hoodieImages[currentProduct.id]}`;
 	}
 	itemImage.alt = `${currentItemId.title} image`
 

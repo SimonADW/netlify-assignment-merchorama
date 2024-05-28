@@ -20,12 +20,11 @@ Contributors:
 * Lecturer / Feedbacks: Reza Dianat
 
 ### Credits
-Photography credits
-* Victor Duenas Teixeira
-* Wheres Lugo
-* Dan Musat
-* Haryo Setyadi
-* Fabia Alves
+#### Photography Credits, Unsplash artists:  
+
+Victor-Duenas-Teixeira Wheres-Lugo Dan-Musat Haryo-Setyadi Fabia-Alves
+Alan-Rrojo-Pinedo Alex-Ware Ali-Pazani Ali-Saadat Blake-Cheek Brock-Wegner Chris-Henry Chris-Lynch Dave-Herring Daytona-Driggers Ermia-Ramez Gab Gesphotoss I-am_nah Janne-Aspegren Jannes-Jacobs Jc-Gellidon Jon-Tyson Jose-Palma Luis-Villasmil Oswaldo-Ibanez Philipp-Lansing Rick-Monteiro Shawn Sonny-Mauricio Syed-Fahad The-Ian Yiran-Ding
+Geoffroy-Danest Alex-Haigh Amirrasim-Ashna Babi Brooke-Cagle Don-Delfin-almonte Fawz-Pilus Florencia-Simonini Gui-Franca Ian-Dooley-TT Jakayla-Toney Jaqueline-Fritz Jose-P-Ortiz Josue-Escoto Jusdevoyage Kukuvaja-Feinkost Logan-Weaver Luis-Santoyo Mohammad-Faruque Muhammet-Sain Patrik-Velich Pro-Church-media Rock-Staar Ryan-Hoffman Sebastian-Martinez Sincerely-Media The-Graphic-space Tj-Sedisa Toa-Heftiba Uji-Kanggo-Gumilang
 
 Font Magra
 * Google Fonts, Open Source
@@ -38,10 +37,8 @@ Icons
 License is found in the [Lincese.txt](License.txt) in the [:root folder][]
 
 ### Related links
-Netlify: [Semesterassignment 4 - Final project](url here)  
+Netlify: [Semesterassignment 4 - Final project](https://merchorama.netlify.app/)  
 GitHub: [Merchorama repository](https://github.com/SimonADW/)
 
 
-MIT © [Simon Winter](https://github.com/SimonADW)
-
-[:root folder]: ./
+MIT © [Simon Winter](https://github.com/SimonADW);
