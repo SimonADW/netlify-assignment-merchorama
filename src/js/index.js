@@ -4,7 +4,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
 import { getFirestore, collection, addDoc, getDocs, doc, setDoc } from "firebase/firestore";
 import { clearErrorsOnInputChange, validateForm } from "./formValidation.js";
 import { renderList, renderFilterButtons, renderCartDrawer } from "./rendering.js";
-import { cartContent, updateCartButtonBadge } from "./cartCalculations.js";
+import { cartContent, emptyCart, updateCartButtonBadge } from "./cartCalculations.js";
 
 import products from "../assets/data/products.js";
 
@@ -159,8 +159,11 @@ errorMessageDismissButton.addEventListener("click", ()=> {
 
 
 // PLACE ORDER TO FIREBASE
+const orderConfirmCard = document.querySelector(".order-confirmation-card");
+const orderConfirmOkButton = document.querySelector(".order-confirmation-card-ok-button");
 
 export async function postOrderToFirebase() {
+	const orderConfirmCardText = document.querySelector(".order-confirmation-card__text");
 	try {
 		let initialValue = {};
 		const cartContentObject = cartContent.reduce((object, item)=> {
@@ -175,9 +178,9 @@ export async function postOrderToFirebase() {
 		console.log(cartContentObject);
 		await addDoc(collection(database, "orders"), cartContentObject);
 		// TODO: EMPTY CART ON CHECKOUT
-		// cartContent = [];
-		// window.localStorage.setItem("cartContent", JSON.stringify(cartContent));
-		console.log(`Thanks for shopping with us! Your order reference is ${cartContentObject.id}.`); 
+		emptyCart();
+		orderConfirmCardText.textContent = `Thanks for shopping with us! Your order reference is ${cartContentObject.id}.`;
+		orderConfirmCard.style.display = "flex";
 		cartDrawer.classList.remove("cart-visible");
 
 	} catch (error) {
@@ -185,10 +188,11 @@ export async function postOrderToFirebase() {
 	}
 }
 
-const checkoutButton = document.querySelector(".shop__cart__checkout-button");
-checkoutButton.addEventListener("click", ()=> {	
-	postOrderToFirebase()		
-})
+orderConfirmOkButton.addEventListener("click", ()=> {
+	orderConfirmCard.style.display = "none";
+	shopMerchListSection.style.display = "none";
+	shopFrontSection.style.display = "flex";
+})	
 
 
 // --------- SHOP PAGE  ---------------------------------------
