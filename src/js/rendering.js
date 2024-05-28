@@ -2,6 +2,7 @@ import products from "../assets/data/products.js";
 import { selectedCategory } from "./index.js";
 import { addToCart, addedToCartButtonStyling, deleteCartItem, getSumTotal } from "./cartCalculations.js";
 import icons from "../assets/icons/iconSvgs.js";
+
 let currentFilterOption = "";
 let currentSortOption = "title";
 
@@ -66,7 +67,6 @@ export const renderList = (listToRender) => {
 		// Open item on click
 		listItemCard.addEventListener("click", () => {
 			renderItem(product.id)
-			console.log("Open item card");
 		})
 
 		const cardImage = document.createElement("img");

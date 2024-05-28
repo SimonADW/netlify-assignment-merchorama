@@ -151,9 +151,15 @@ h4 {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	text-align: center;
-	background: linear-gradient(to right, rgb(55, 55, 71) 5% ,white 35% 65%,  rgb(55, 55, 71) 95%);
-	border-top: 1px solid var(--color-tercary);
+	text-align: center;	
+	color: var(--color-secondary);
+	background-color: rgb(171, 129, 66);
+	background-image: url(../src/assets/images/merch-shop-background.png);
+	background-blend-mode: multiply;
+	background-size: cover;
+	background-position: 50%;
+	border-top: 2px solid var(--color-tercary);
+	border-bottom: 3px solid var(--color-tercary);
 }
 
 .live-watch div:nth-child(3) {

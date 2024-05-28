@@ -14,12 +14,18 @@
 	justify-content: center;
 	gap: var(--spacing-medium);	
 	flex: 1 0 auto;
+	
+	background-color: rgb(91, 69, 48);
+	background-image: url(../src/assets/images/merch-shop-background.png);
+	background-size: cover;	
+	background-blend-mode: overlay;
 }
 
 .shop__tees-link,
 .shop__hoodies-link {
 	text-align: center;	
 	width: 30%;
+	color: var(--color-secondary);
 	font-size: 1.5rem;
 }
 

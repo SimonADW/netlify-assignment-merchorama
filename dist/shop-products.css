@@ -102,7 +102,6 @@ input[type="radio"] {
 	margin-bottom: var(--spacing-large);
 }
 
-
 /* LIST SECTION ----------------------------------- */
 
 .shop__merch-list__items {
@@ -118,13 +117,13 @@ input[type="radio"] {
 	display: flex;		
 	border-bottom: 1px solid var(--color-primary);
 	padding: var(--spacing-small) 0;
-	margin-bottom: var(--spacing-large);
+	margin-bottom: var(--spacing-large);	
 }
 
 
 .shop__merch-list__items__card:hover img {	
-	transform: scale(1.01);
-	box-shadow: 2px 2px 5px var(--color-primary);
+	transform: scale(1.02);
+	box-shadow: 2px 2px 5px var(--color-primary);	
 }
 
 .shop__merch-list__items__card img {
