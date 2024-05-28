@@ -34,6 +34,10 @@
 	border: 1px solid var(--color-primary);
 }
 
+.shop__merch-search-input {
+	padding: 0 0.5rem;
+}
+
 .shop__merch-list__filter-drawer {
 	width: 100%;	
 	display: none;  				/* JS toggles Display */
@@ -111,14 +115,21 @@ input[type="radio"] {
 
 .shop__merch-list__items__card {
 	width: 100%;	
-	display: flex;	
+	display: flex;		
 	border-bottom: 1px solid var(--color-primary);
 	padding: var(--spacing-small) 0;
 	margin-bottom: var(--spacing-large);
 }
 
+
+.shop__merch-list__items__card:hover img {	
+	transform: scale(1.01);
+	box-shadow: 2px 2px 5px var(--color-primary);
+}
+
 .shop__merch-list__items__card img {
 	width: 25%;
+	transition: transform 300ms;
 }
 
 .shop__merch-list__items__card-content-wrapper {

@@ -65,7 +65,7 @@
 
 .errorMessage {
 	height: 1rem;
-	font-size: var(--font-size-xsmall);
+	font-size: var(--font-size-small);
 	color: red;
 	visibility: hidden;
 }

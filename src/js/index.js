@@ -177,7 +177,6 @@ export async function postOrderToFirebase() {
 		
 		console.log(cartContentObject);
 		await addDoc(collection(database, "orders"), cartContentObject);
-		// TODO: EMPTY CART ON CHECKOUT
 		emptyCart();
 		orderConfirmCardText.textContent = `Thanks for shopping with us! Your order reference is ${cartContentObject.id}.`;
 		orderConfirmCard.style.display = "flex";
