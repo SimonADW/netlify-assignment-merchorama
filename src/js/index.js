@@ -365,5 +365,5 @@ const fetchLiveWatchInfo = async ()=> {
 	}
 }
 
-// fetchLiveWatchInfo();
+fetchLiveWatchInfo();
 checkAuthStateAndRenderShop();
