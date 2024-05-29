@@ -4,6 +4,8 @@ import { addToCart, addedToCartButtonStyling, deleteCartItem, getSumTotal } from
 import icons from "../assets/icons/iconSvgs.js";
 import { teesImages, hoodieImages } from "../assets/data/imagePaths.js";
 
+// import hoodieFront from "../assets/images_loaded/hoodie-orange-victor-duenas-teixeira.jpg";
+
 let currentFilterOption = "";
 let currentSortOption = "title";
 

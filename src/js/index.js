@@ -5,7 +5,6 @@ import { getFirestore, collection, addDoc, getDocs, doc, setDoc } from "firebase
 import { clearErrorsOnInputChange, validateForm } from "./formValidation.js";
 import { renderList, renderFilterButtons, renderCartDrawer } from "./rendering.js";
 import { cartContent, emptyCart, updateCartButtonBadge } from "./cartCalculations.js";
-
 import products from "../assets/data/products.js";
 
 const homeMainSection = document.querySelector(".home__main-section");
@@ -365,5 +364,5 @@ const fetchLiveWatchInfo = async ()=> {
 	}
 }
 
-fetchLiveWatchInfo();
+// fetchLiveWatchInfo();
 checkAuthStateAndRenderShop();
