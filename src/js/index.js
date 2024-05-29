@@ -206,7 +206,7 @@ export let selectedCategory = "hoodie";
 // DISPLAY SHOP MENU
 
 const shopMenuButton = document.querySelector(".header__menu-button");
-const shopMenuDrawer = document.querySelector(".menudrawer");
+const shopMenuDrawer = document.querySelector(".menudrawer-wrapper");
 const shopDrawerCloseButton = document.querySelector(".menudrawer__close");
 
 shopMenuButton.addEventListener("click", (event) => {

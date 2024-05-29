@@ -83,10 +83,15 @@
 	background: var(--color-tercary);
 }
 
+.shop__cart__checkout-button:hover {
+	background-color: lightgray;
+}
+
 .empty-cart-confirmation-card,
 .checkout-confirmation-card,
 .order-confirmation-card {
 	width: 90%;
+	max-width: 35rem;
 	height: 13rem;
 	display: none;
 	flex-direction: column;
@@ -116,4 +121,12 @@
 			color: var(--color-secondary);
 			background: var(--color-foreground);
 		}
+}
+
+.empty-cart-confirmation-card div,
+.checkout-confirmation-card div,
+.order-confirmation-card div {
+	display: flex;
+	justify-content: center;
+	gap: 0.5rem;
 }

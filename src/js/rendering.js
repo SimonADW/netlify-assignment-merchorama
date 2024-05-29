@@ -296,4 +296,13 @@ export const renderCartDrawer = ()=> {
 
 	const sumTotalSpan = document.querySelector(".shop__cart-sum");
 	sumTotalSpan.textContent = getSumTotal();
+
+	const checkoutButton = document.querySelector(".shop__cart__checkout-button");
+	if(cartContent.length === 0) {
+		checkoutButton.style.backgroundColor = "lightgrey";
+		checkoutButton.style.pointerEvents = "none";
+	} else {
+		checkoutButton.style.backgroundColor = "var(--color-tercary)";
+		checkoutButton.style.pointerEvents = "auto";
+	}
 }

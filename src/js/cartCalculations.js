@@ -89,7 +89,9 @@ emptyCartCancelButton.addEventListener("click", ()=> {
 })
 
 checkoutButton.addEventListener("click", ()=> {	
-	checkoutConfirmCard.style.display = "flex";	
+	if(cartContent.length > 0) {
+		checkoutConfirmCard.style.display = "flex";	
+	}
 })
 
 checkoutConfirmButton.addEventListener("click", ()=> {	
