@@ -161,7 +161,7 @@ h4 {
 	align-items: center;
 	text-align: center;	
 	color: var(--color-secondary);
-	background-color: rgb(171, 129, 66);
+	background-color: rgb(102, 111, 118);
 	background-image: url(../src/assets/images/merch-shop-background.png);
 	background-blend-mode: multiply;
 	background-size: cover;

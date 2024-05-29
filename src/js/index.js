@@ -325,6 +325,13 @@ cartDrawerClose.addEventListener("click", () => {
 // 	}
 // });
 
+// SHOP__BACK BUTTON
+const shopBackButton = document.querySelector(".shop__back-button");
+shopBackButton.addEventListener("click", ()=> {
+	shopMerchListSection.style.display = "none";
+	shopFrontSection.style.display = "flex";
+});
+
 const liveWatchInfoDiv = document.querySelector(".live-watch__info");
 const renderLiveWatch = (concertInfo)=> {
 	const getPostFixedDateString = ()=> {

@@ -27,6 +27,19 @@
 	text-align: center;
 }
 
+.shop__back-button {
+	width: 2rem;
+	height: fit-content;
+	position: absolute;
+	left: 0.5rem;
+	top: 3.5rem;
+}
+
+.shop__back-button path {
+	stroke: var(--color-primary);
+	opacity: 0.8;
+}
+
 .shop__merch-search-input, 
 .shop__merch-list-filter-button {
 	width: 100%;
