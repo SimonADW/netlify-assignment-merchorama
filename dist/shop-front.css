@@ -15,10 +15,10 @@
 	gap: var(--spacing-medium);	
 	flex: 1 0 auto;
 	
-	background-color: rgb(91, 69, 48);
+	background-color: rgb(230, 230, 230);
 	background-image: url(../src/assets/images/merch-shop-background.png);
 	background-size: cover;	
-	background-blend-mode: overlay;
+	background-blend-mode: multiply;
 }
 
 .shop__tees-link,

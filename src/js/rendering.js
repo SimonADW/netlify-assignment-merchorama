@@ -104,7 +104,7 @@ export const renderList = (listToRender) => {
 		cardContentWrapper.appendChild(cardRightContainer);
 
 		const itemPrice = document.createElement("div");
-		itemPrice.textContent = product.price;
+		itemPrice.textContent = `$ ${product.price}`;
 		itemPrice.classList.add("shop__merch-list__item-price");
 		const addToCartButton = document.createElement("button");
 		addToCartButton.classList.add("shop__merch-list__item__cart-button");
@@ -249,7 +249,7 @@ const renderItem = (currentItemId) => {
 	// Item right container
 	const itemPrice = document.createElement("div");
 	itemPrice.classList.add("shop__item-price");
-	itemPrice.textContent = currentProduct.price;
+	itemPrice.textContent = `$ ${currentProduct.price}`;
 
 	const addToCartText = document.createElement("div");
 	addToCartText.textContent = "Add to cart";
@@ -298,11 +298,13 @@ export const renderCartDrawer = ()=> {
 	sumTotalSpan.textContent = getSumTotal();
 
 	const checkoutButton = document.querySelector(".shop__cart__checkout-button");
+	const clearCartButton = document.querySelector(".shop__cart__clear-cart-button");
 	if(cartContent.length === 0) {
-		checkoutButton.style.backgroundColor = "lightgrey";
-		checkoutButton.style.pointerEvents = "none";
+		checkoutButton.classList.add("disabled");
+		clearCartButton.style.visibility = "hidden";
+		
 	} else {
-		checkoutButton.style.backgroundColor = "var(--color-tercary)";
-		checkoutButton.style.pointerEvents = "auto";
+		checkoutButton.classList.remove("disabled");
+		clearCartButton.style.visibility = "visible";
 	}
 }

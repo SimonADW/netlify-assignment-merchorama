@@ -56,7 +56,6 @@
 
 .cart-item__amount {
 	margin-left: auto;
-	
 	font-size: var(--font-size-base);
 	font-weight: 400;	
 	margin-right: var(--spacing-small);
@@ -71,7 +70,6 @@
 	margin-left: var(--spacing-small);
 }
 
-
 .shop__cart__checkout-button {
 	height: 2.5rem;
 	width: fit-content;
@@ -83,8 +81,17 @@
 	background: var(--color-tercary);
 }
 
-.shop__cart__checkout-button:hover {
-	background-color: lightgray;
+.shop__cart__checkout-button.disabled {
+    background-color: lightgrey;
+    pointer-events: none;
+}
+
+.shop__cart__checkout-button:not(.disabled):hover {
+    background: #8e6f5a;
+}
+
+.shop__cart__checkout-button:not(.disabled):active {
+    background: #555555;
 }
 
 .empty-cart-confirmation-card,
