@@ -1,4 +1,7 @@
-## Kristiania Frontend 2024 - Assigment 4 - Simon Winter  
+## This is a copy with files necessary for Netlify-deployment put in "dist"
+
+## Kristiania Frontend 2024 - Assigment 4 - Simon Winter 
+
 ### Assignment summary:
 The final project aims to showcase your proficiency in coding and design, integrating the skills acquired in the first semester, and the latest knowledge acquired during the second semester. You are free to come up with your own ideas for the final project. 
 
