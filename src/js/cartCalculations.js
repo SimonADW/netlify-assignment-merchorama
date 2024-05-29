@@ -15,7 +15,7 @@ export const updateCartButtonBadge = ()=> {
 	numberOfItemsInCart < 100
 	? (cartBadge.textContent = `${numberOfItemsInCart}`)
 	: (cartBadge.textContent = "");
-}
+};
 
 export const addToCart = (item)=> {			
 	const existingProduct = cartContent.find((product)=> product.id === item.id)
@@ -73,32 +73,32 @@ export const emptyCart = ()=> {
 	window.localStorage.setItem("cartContent", JSON.stringify(cartContent));
 	renderCartDrawer();
 	updateCartButtonBadge();
-}
+};
 
 emptyCartButton.addEventListener("click", ()=> {
 	emptyCartConfirmCard.style.display = "flex";
-})
+});
 
 emptyCartConfirmButton.addEventListener("click", ()=> {
 	emptyCartConfirmCard.style.display = "none";
 	emptyCart();
-})
+});
 
 emptyCartCancelButton.addEventListener("click", ()=> {
 	emptyCartConfirmCard.style.display = "none";
-})
+});
 
 checkoutButton.addEventListener("click", ()=> {	
 	if(cartContent.length > 0) {
 		checkoutConfirmCard.style.display = "flex";	
 	}
-})
+});
 
 checkoutConfirmButton.addEventListener("click", ()=> {	
 	checkoutConfirmCard.style.display = "none";	
 	postOrderToFirebase();
-})
+});
 
 checkoutCancelButton.addEventListener("click", ()=> {
 	checkoutConfirmCard.style.display = "none";
-})
+});

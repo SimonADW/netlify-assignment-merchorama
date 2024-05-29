@@ -9,7 +9,7 @@ export const validateForm = (formElementClassName)=> {
 			passwordError: "Please enter a password",
 			confirmPasswordError: "Please enter a password",
 			passwordMismatchError: "Password are not matching"
-		}
+		};
 
 	formInputs.forEach((input) => {
 		// Find error element corresponding to the input
@@ -42,7 +42,7 @@ export const validateForm = (formElementClassName)=> {
 	});
 
 	return !errors.errorStatus;
-}
+};
 
 export const clearErrorsOnInputChange = (formElementClassName)=> {
 	const formElement = document.querySelectorAll(`.${formElementClassName} input`);
@@ -51,5 +51,5 @@ export const clearErrorsOnInputChange = (formElementClassName)=> {
 			input.nextSibling.nextSibling.textContent = "";	
 		})
 	})
-}
+};
 

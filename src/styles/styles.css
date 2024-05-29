@@ -163,7 +163,7 @@ h4 {
 	text-align: center;	
 	color: var(--color-secondary);
 	background-color: rgb(102, 111, 118);
-	background-image: url(../src/assets/images/merch-shop-background.png);
+	background-image: url(../assets/images/merch-shop-background.png);
 	background-blend-mode: multiply;
 	background-size: cover;
 	background-position: 50%;

@@ -4,8 +4,6 @@ import { addToCart, addedToCartButtonStyling, deleteCartItem, getSumTotal } from
 import icons from "../assets/icons/iconSvgs.js";
 import { teesImages, hoodieImages } from "../assets/data/imagePaths.js";
 
-// import hoodieFront from "../assets/images_loaded/hoodie-orange-victor-duenas-teixeira.jpg";
-
 let currentFilterOption = "";
 let currentSortOption = "title";
 
@@ -52,7 +50,7 @@ export const renderFilterButtons = (productsArray) => {
 			}
 		})
 	});
-}
+};
 
 
 // RENDER LIST OF PRODUCTS
@@ -123,7 +121,7 @@ export const renderList = (listToRender) => {
 			addedToCartButtonStyling(addToCartButton, addToCartText);	
 		})
 	});
-}
+};
 
 // FILTERING
 
@@ -171,20 +169,20 @@ function submitSearch(currentList, inputvalue) {
 
 	renderList(searchResult);
 	return searchResult;
-}
+};
 
 const searchInput = document.querySelector(".shop__merch-search-input");
 
 searchInput.addEventListener("keyup", () => {
 	submitSearch(products, searchInput.value)
-})
+});
 
 // CLEAR FILTERS
 const filterClearButton = document.querySelector(".shop__merch-list__filter-clear-button");
 filterClearButton.addEventListener("click", () => {
 	renderList(filterProducts(products, ""));
 	filterOptionsList.reset();
-})
+});
 
 // ITEM CARD LINKS
 
@@ -265,7 +263,7 @@ const renderItem = (currentItemId) => {
 
 	itemRightContainer.append(itemPrice, itemAddToCartButton, addToCartText);
 	itemContainer.append(itemCloseButton, itemImage, itemContentWrapper);
-}
+};
 
 
 export const renderCartDrawer = ()=> {
@@ -308,4 +306,4 @@ export const renderCartDrawer = ()=> {
 		checkoutButton.classList.remove("disabled");
 		clearCartButton.style.visibility = "visible";
 	}
-}
+};

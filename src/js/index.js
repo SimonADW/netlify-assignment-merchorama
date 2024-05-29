@@ -34,7 +34,7 @@ export const checkAuthStateAndRenderShop = ()=> {
 			headerButtonContainer.style.display = "none";
 		}
 	})
-}
+};
 
 export const signOutUser = async ()=> {
 	try {
@@ -43,7 +43,7 @@ export const signOutUser = async ()=> {
 	} catch {
 		console.log("Log out failed");
 	}
-}
+};
 
 // ----------- LANDING PAGE ----------------------------------------
 
@@ -57,12 +57,12 @@ const signUpButton = document.querySelector(".sign-up__button");
 homeSignInLink.addEventListener("click", () => {
 	signInSection.style.display = "flex";
 	homeMainSection.style.display = "none";
-})
+});
 
 signInSectionClose.addEventListener("click", () => {
 	signInSection.style.display = "none";
 	homeMainSection.style.display = "flex";
-})
+});
 
 signInButton.addEventListener("click", (event)=> {
 	event.preventDefault();
@@ -78,7 +78,7 @@ signInButton.addEventListener("click", (event)=> {
 			errorMessageContent.textContent = `Please try again - ${error.message}`;
 		})
 	}
-})
+});
 
 clearErrorsOnInputChange("sign-in__form");
 
@@ -126,7 +126,7 @@ signOutButton.addEventListener("click", ()=> {
 });
 
 // ----------- FIREBASE FIRESTORE ----------------------------------------
-// TODO: Set firebase to production mode
+
 export const database = getFirestore(app);
 
 const errorMessageCard = document.querySelector(".error-card");
@@ -156,12 +156,12 @@ export async function getProductsFromDatabase() {
 		errorMessageCard.style.display = "block";
 		errorMessageContent.textContent = `Something went wrong - Sorry for the inconvenience. Error: ${error.message}`;
     }
-}
+};
 
 errorMessageDismissButton.addEventListener("click", ()=> {
 	errorMessageCard.style.display = "none";
 	errorMessageContent.textContent = "";
-})
+});
 
 
 // PLACE ORDER TO FIREBASE
@@ -192,14 +192,14 @@ export async function postOrderToFirebase() {
 		errorMessageCard.style.display = "block";
 		errorMessageContent.textContent = `Something went wrong - Sorry for the inconvenience. Please contact us for further assistance`;
 	}
-}
+};
 
 orderConfirmOkButton.addEventListener("click", ()=> {
 	orderConfirmCard.style.display = "none";
 	shopMerchListSection.style.display = "none";
 	itemPage.style.display = "none";
 	shopFrontSection.style.display = "flex";
-})	
+});
 
 
 // --------- SHOP PAGE  ---------------------------------------
@@ -225,14 +225,6 @@ shopDrawerCloseButton.addEventListener("click", () => {
 	shopMenuDrawer.classList.remove("menudrawer-visible");
 });
 
-// TODO: Fix close menu on click outside
-// window.addEventListener("click", (event)=> {
-// 	if(shopMenuDrawer.style.display !== "none" && event.target.className !== "menudrawer") {
-// 		shopMenuDrawer.style.display = "none";
-// 		console.log(event.target);
-// 	}
-// })
-
 // MENU LINKS
 
 const shopMenuTeesLink = document.querySelector(".menu-tees-link");
@@ -256,7 +248,7 @@ shopMenuTeesLink.addEventListener("click", () => {
 
 	filterOptionsList.reset()
 	renderList(products);	
-})
+});
 
 shopMenuHoodiesLink.addEventListener("click", () => {
 	selectedCategory = "hoodie"
@@ -285,7 +277,7 @@ shopFrontTeesLink.addEventListener("click", (e) => {
 	shopMerchListSection.style.display = "flex";
 	shopMenuDrawer.classList.remove("menudrawer-visible");
 	renderList(products);
-})
+});
 
 shopFrontHoodiesLink.addEventListener("click", (e) => {
 	e.preventDefault();
@@ -302,11 +294,11 @@ const filterMobileDrawer = document.querySelector(".shop__merch-list__filter-dra
 const filterMobileDrawerClose = document.querySelector(".item__close");
 filterMobileButton.addEventListener("click", ()=> {	
 	filterMobileDrawer.style.display = "flex";	
-})
+});
 
 filterMobileDrawerClose.addEventListener("click", ()=> {
 	filterMobileDrawer.style.display = "none";
-})
+});
 
 // DISPLAY CART DRAWER
 
@@ -318,19 +310,11 @@ headerCartButton.addEventListener("click", (event) => {
 	event.stopPropagation()
 	renderCartDrawer();
 	cartDrawer.classList.toggle("cart-visible");
-})
+});
 
 cartDrawerClose.addEventListener("click", () => {
 	cartDrawer.classList.remove("cart-visible");
-})
-
-// TODO: Fix close menu on click outside
-// window.addEventListener("click", (event)=> {
-// 	if(cartDrawer.style.display !== "none" && event.target.className !== "shop__cart-drawer") {
-// 		cartDrawer.classList.remove("cart-visible");
-// 		console.log(event.target.className);
-// 	}
-// });
+});
 
 // SHOP__BACK BUTTON
 const shopBackButton = document.querySelector(".shop__back-button");
@@ -358,7 +342,7 @@ const renderLiveWatch = (concertInfo)=> {
 	
 	const timeOfDay = concertInfo.dates.start.localTime.slice(0, -3);
 	liveWatchInfoDiv.textContent = `${getPostFixedDateString()}: ${concertInfo.name}, ${timeOfDay}`;
-}
+};
 
 const fetchLiveWatchInfo = async ()=> {
 	try {
@@ -368,7 +352,7 @@ const fetchLiveWatchInfo = async ()=> {
 	} catch (error) {
 		liveWatchInfoDiv.textContent = `Sorry! Currently unable to get concert info`	
 	}
-}
+};
 
 fetchLiveWatchInfo();
 checkAuthStateAndRenderShop();
