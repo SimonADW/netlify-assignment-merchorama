@@ -73,6 +73,10 @@ signInButton.addEventListener("click", (event)=> {
 			signInButton.parentElement.reset();
 			signInSection.style.display = "none";
 		})
+		.catch((error)=> {
+			errorMessageCard.style.display = "block";
+			errorMessageContent.textContent = `Please try again - ${error.message}`;
+		})
 	}
 })
 
@@ -101,6 +105,10 @@ signUpButton.addEventListener("click", (event)=> {
 			checkAuthStateAndRenderShop();
 			signUpButton.parentElement.reset();
 			signUpSection.style.display = "none";
+		})
+		.catch((error)=> {
+			errorMessageCard.style.display = "block";
+			errorMessageContent.textContent = `Please try again - ${error.message}`;
 		})
 	}
 });
@@ -147,7 +155,6 @@ export async function getProductsFromDatabase() {
     } catch (error) {
 		errorMessageCard.style.display = "block";
 		errorMessageContent.textContent = `Something went wrong - Sorry for the inconvenience. Error: ${error.message}`;
-        console.log(error.message);
     }
 }
 
@@ -182,7 +189,8 @@ export async function postOrderToFirebase() {
 		cartDrawer.classList.remove("cart-visible");
 
 	} catch (error) {
-		console.log(error.message);
+		errorMessageCard.style.display = "block";
+		errorMessageContent.textContent = `Something went wrong - Sorry for the inconvenience. Please contact us for further assistance`;
 	}
 }
 
@@ -356,7 +364,6 @@ const fetchLiveWatchInfo = async ()=> {
 	try {
 		const response = await fetch("http://localhost:4000/");
 		const data = await response.json();
-		console.log(data);
 		renderLiveWatch(data)
 	} catch (error) {
 		liveWatchInfoDiv.textContent = `Sorry! Currently unable to get concert info`	

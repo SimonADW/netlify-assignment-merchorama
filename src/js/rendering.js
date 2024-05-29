@@ -15,7 +15,6 @@ const listContainer = document.querySelector(".shop__merch-list__items");
 const listInputWrapper = document.querySelector(".shop__merch-input-wrapper");
 const itemPage = document.querySelector(".shop__item-page");
 const filterOptionsList = document.querySelector(".shop__merch-list-filter-options");
-// let currentItemId = null;
 
 export const renderFilterButtons = (productsArray) => {
 	// Get array of brands

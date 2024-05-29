@@ -1,6 +1,6 @@
 const path = require('path')
 module.exports = {
-	mode: 'development',
+	mode: 'production',
 	entry: "./src/js/index.js",
 	output: {
 		path: path.resolve(__dirname,'dist'),
@@ -21,18 +21,6 @@ module.exports = {
 					}
 				}
 			},
-			{
-				test: /\.(png|jpg|jpeg|gif|svg)$/,
-				use: [
-				  {
-					loader: 'file-loader',
-					options: {
-					  name: 'assets/images/[name].[ext]'
-					}
-				  }
-				]
-			},
 		]
-	},
-	watch: true
+	}
 }
