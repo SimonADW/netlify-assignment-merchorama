@@ -5,6 +5,7 @@ body {
 	font-size: var(--font-size-base);
 	display: flex;
 	flex-direction: column;
+	background: var(--color-background);
 }
 
 main {

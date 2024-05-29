@@ -359,10 +359,9 @@ const fetchLiveWatchInfo = async ()=> {
 		console.log(data);
 		renderLiveWatch(data)
 	} catch (error) {
-		liveWatchInfoDiv.textContent = `Sorry! Currently unable to get concert info`
-		console.log(error);		
+		liveWatchInfoDiv.textContent = `Sorry! Currently unable to get concert info`	
 	}
 }
 
-// fetchLiveWatchInfo();
+fetchLiveWatchInfo();
 checkAuthStateAndRenderShop();
