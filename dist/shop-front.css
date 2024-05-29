@@ -16,7 +16,7 @@
 	flex: 1 0 auto;
 	
 	background-color: rgb(230, 230, 230);
-	background-image: url(../assets/images/merch-shop-background.png);
+	background-image: url(./assets/images/merch-shop-background.png);
 	background-size: cover;	
 	background-blend-mode: multiply;
 }

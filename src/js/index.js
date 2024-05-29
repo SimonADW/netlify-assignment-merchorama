@@ -5,7 +5,7 @@ import { getFirestore, collection, addDoc, getDocs, doc, setDoc } from "firebase
 import { clearErrorsOnInputChange, validateForm } from "./formValidation.js";
 import { renderList, renderFilterButtons, renderCartDrawer } from "./rendering.js";
 import { cartContent, emptyCart, updateCartButtonBadge } from "./cartCalculations.js";
-import products from "../assets/data/products.js";
+import products from "../../dist/assets/data/products.js";
 
 const homeMainSection = document.querySelector(".home__main-section");
 const shopMainSection = document.querySelector(".shop__main-section");
@@ -181,7 +181,6 @@ export async function postOrderToFirebase() {
 			} 
 		}, initialValue);
 		
-		console.log(cartContentObject);
 		await addDoc(collection(database, "orders"), cartContentObject);
 		emptyCart();
 		orderConfirmCardText.textContent = `Thanks for shopping with us! Your order reference is ${cartContentObject.id}.`;
